@@ -18,13 +18,24 @@
         <item name="android:layout_width">wrap_content</item>>
         <item name="android:layout_height">wrap_content</item>>
         <item name="fontFamily">@font/open_sans_semibold</item>
-        <item name="layout_constraintStart_toStartOf">parent</item>
+
     </style>
 
     <style name="TextView.Horizontal">
         <item name="layout_constraintHorizontal_bias">0.5</item>
     </style>
 
+    <style name="EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">#BDBDBD</item>
+        <item name="android:ems">10</item>
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textColor">#FAFAFA</item>
+        <item name="android:textSize">14sp</item>
+
+    </style>
  <style name="Button">
      <item name="android:layout_height">55dp</item>
      <item name="android:layout_marginStart">16dp</item>

@@ -13,14 +13,14 @@
         android:layout_height="0dp"
         android:background="#242235"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-16dp" />
+        app:layout_constraintVertical_weight="0.5"
+        tools:layout_editor_absoluteX="0dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/appCompatTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextView.Horizontal"
         android:layout_marginTop="192dp"
-        android:text="Let's get acquainted"
+        android:text="@string/let_s_get_acquainted"
         android:textColor="#FAFAFA"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,14 +29,12 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/appCompatTextView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextView.Horizontal"
         android:layout_marginTop="8dp"
-        android:text="Fill out the profile and go to the application!"
+        android:text="@string/fill_out_the_profile_and_go_to_the_application"
         android:textColor="#FAFAFA"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
 
@@ -57,77 +55,58 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_semibold"
-                android:text="E-mail"
+                style="@style/TextView"
+                android:text="@string/e_mail"
                 android:textColor="#BDBDBD"
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/editTextTextEmailAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/EditText"
                 android:layout_gravity="top"
-                android:backgroundTint="#BDBDBD"
-                android:ems="10"
-                android:fontFamily="@font/open_sans_semibold"
+                android:contentDescription="@string/e_mail"
                 android:inputType="textEmailAddress"
-                android:textColor="#FAFAFA"
-                android:textSize="14sp" />
+                tools:ignore="EditableContentDescCheck" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/TextView"
                 android:layout_marginTop="24dp"
-                android:fontFamily="@font/open_sans_semibold"
-                android:text="Password"
+                android:text="@string/password"
                 android:textColor="#BDBDBD"
                 android:textSize="14sp" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/editTextTextPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/EditText"
                 android:layout_gravity="bottom"
-                android:backgroundTint="#BDBDBD"
-                android:ems="10"
-                android:fontFamily="@font/open_sans_semibold"
+                android:contentDescription="@string/password"
                 android:inputType="textPassword"
-                android:textColor="#FAFAFA"
-                android:textSize="14sp" />
+                tools:ignore="EditableContentDescCheck" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatCheckBox
                     android:id="@+id/appCompatCheckBox"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="40dp"
+                    android:layout_height="48dp"
                     android:buttonTint="#FAFAFA"
                     app:layout_constraintBottom_toTopOf="@+id/button5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="55dp"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:text="Remember me"
+                    style="@style/TextView"
+                    android:text="@string/remember_me"
                     android:textColor="#B2B2B3"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toTopOf="@+id/button5"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.009"
                     app:layout_constraintStart_toEndOf="@+id/appCompatCheckBox" />
             </LinearLayout>
-
         </LinearLayout>
-
-
     </FrameLayout>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -143,14 +122,13 @@
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="onClick"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextView.Horizontal"
         android:layout_marginBottom="12dp"
-        android:fontFamily="@font/open_sans_semibold"
         android:gravity="center_horizontal"
         android:text="@string/by_clicking_register_you_agree_to_our_terms_nand_conditions"
         android:textColor="#FAFAFA"
@@ -172,20 +150,16 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextView"
             android:layout_gravity="start"
-            android:fontFamily="@font/open_sans_semibold"
             android:text="@string/already_have_an_account"
             android:textColor="#B2B2B3"
             android:textSize="14sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextView"
             android:layout_gravity="end"
-            android:fontFamily="@font/open_sans_semibold"
             android:text="@string/sign_in"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
@@ -194,37 +168,55 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextView.Horizontal"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/open_sans_semibold"
         android:text="@string/or"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button5"
-        android:layout_width="369dp"
-        android:layout_height="29dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginRight="18dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
         android:layout_marginBottom="8dp"
-        android:background="#FAFAFA"
-        android:drawableLeft="@drawable/google_foreground"
-        android:fontFamily="@font/open_sans_semibold"
-        android:text="@string/google"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
+        android:background="@drawable/rect_fafafa"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/button"
+            android:layout_alignTop="@+id/button"
+            android:layout_alignEnd="@+id/button"
+            android:layout_alignBottom="@+id/button"            />
 
+        <RelativeLayout
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/google_text"
+            style="@style/TextView"
+            android:layout_centerInParent="true"
+            android:text="@string/google"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/google_text"
+            android:padding="10dp"
+            android:src="@drawable/google_icon" />
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
