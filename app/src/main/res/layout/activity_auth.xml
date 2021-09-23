@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,7 +12,6 @@
         android:layout_height="0dp"
         android:background="#242235"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight="0.5"
         tools:layout_editor_absoluteX="0dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -60,13 +58,26 @@
                 android:textColor="#BDBDBD"
                 android:textSize="14sp" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/editTextTextEmailAddress"
-                style="@style/EditText"
-                android:layout_gravity="top"
-                android:contentDescription="@string/e_mail"
-                android:inputType="textEmailAddress"
-                tools:ignore="EditableContentDescCheck" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="#242235"
+                app:errorEnabled="true"
+
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextTextEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:contentDescription="@string/e_mail"
+                    android:imeOptions="actionGo"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    tools:ignore="EditableContentDescCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/TextView"
@@ -106,6 +117,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/appCompatCheckBox" />
             </LinearLayout>
+
+
         </LinearLayout>
     </FrameLayout>
 
@@ -117,13 +130,13 @@
         android:layout_marginRight="18dp"
         android:layout_marginBottom="28dp"
         android:background="@drawable/button_border_orange"
+        android:onClick="onClick"
         android:text="@string/register"
         android:textColor="#FAFAFA"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        android:onClick="onClick"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView2"
@@ -195,7 +208,7 @@
             android:layout_alignStart="@+id/button"
             android:layout_alignTop="@+id/button"
             android:layout_alignEnd="@+id/button"
-            android:layout_alignBottom="@+id/button"            />
+            android:layout_alignBottom="@+id/button" />
 
         <RelativeLayout
             android:id="@+id/button"
