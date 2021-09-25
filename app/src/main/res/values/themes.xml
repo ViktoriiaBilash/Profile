@@ -11,7 +11,16 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+
+
+        <item name="android:windowAnimationStyle">@style/WindowAnimations</item>
+    </style>
+
+    <style name="WindowAnimations">
+        <item name="android:activityOpenEnterAnimation">@anim/enter_activity</item>
+        <item name="android:activityOpenExitAnimation">@anim/exit_activity</item>
+        <item name="android:activityCloseEnterAnimation">@anim/enter_activity</item>
+        <item name="android:activityCloseExitAnimation">@anim/exit_activity</item>
     </style>
 
     <style name= "TextView">
@@ -25,17 +34,7 @@
         <item name="layout_constraintHorizontal_bias">0.5</item>
     </style>
 
-    <style name="EditText">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:backgroundTint">#BDBDBD</item>
-        <item name="android:ems">10</item>
-        <item name="android:fontFamily">@font/open_sans_semibold</item>
-        <item name="android:minHeight">48dp</item>
-        <item name="android:textColor">#FAFAFA</item>
-        <item name="android:textSize">14sp</item>
 
-    </style>
  <style name="Button">
      <item name="android:layout_height">55dp</item>
      <item name="android:layout_marginStart">16dp</item>
@@ -45,12 +44,6 @@
      <item name="layout_constraintStart_toStartOf">parent</item>
      <item name="layout_constraintHorizontal_bias">0.5</item>
  </style>
-
-    <style name="MyEditTextTheme">
-        <!-- Used for the bottom line when not selected / focused -->
-        <item name="colorAccent">@color/purple_200</item>
-        <!-- colorControlActivated & colorControlHighlight use the colorAccent color by default -->
-    </style>
 
 
 </resources>

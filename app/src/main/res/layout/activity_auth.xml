@@ -60,12 +60,16 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxBackgroundColor="#242235"
                 app:errorEnabled="true"
-
-                >
+                app:boxStrokeColor="@color/gray"
+                app:counterMaxLength="60"
+                android:textColorHint="@color/red"
+                app:hintTextColor="@color/red"
+               >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextTextEmailAddress"
@@ -76,7 +80,9 @@
                     android:imeOptions="actionGo"
                     android:inputType="textEmailAddress"
                     android:singleLine="true"
-                    tools:ignore="EditableContentDescCheck" />
+                    tools:ignore="EditableContentDescCheck"
+                    android:textColor="@color/gray"/>
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -86,13 +92,29 @@
                 android:textColor="#BDBDBD"
                 android:textSize="14sp" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/editTextTextPassword"
-                style="@style/EditText"
-                android:layout_gravity="bottom"
-                android:contentDescription="@string/password"
-                android:inputType="textPassword"
-                tools:ignore="EditableContentDescCheck" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="#242235"
+                app:errorEnabled="true"
+                app:boxStrokeColor="@color/gray"
+                app:counterMaxLength="60"
+                android:textColorHint="@color/red"
+                app:hintTextColor="@color/red">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionGo"
+                    android:singleLine="true"
+                    android:textColor="@color/gray"
+                    android:layout_gravity="bottom"
+                    android:contentDescription="@string/password"
+                    android:inputType="textPassword"
+                    tools:ignore="EditableContentDescCheck"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
