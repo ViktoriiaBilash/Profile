@@ -14,4 +14,6 @@ class MainActivity : AppCompatActivity() {
         val out = findViewById<AppCompatTextView>(R.id.name_text_view)
         out.setText(user)
     }
+
+
 }

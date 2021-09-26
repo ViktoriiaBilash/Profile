@@ -10,46 +10,50 @@
         android:id="@+id/view_top_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#242235"
+        android:background="@color/navy"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/appCompatTextView"
         style="@style/TextView.Horizontal"
-        android:layout_marginTop="192dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/let_s_get_acquainted"
         android:textColor="#FAFAFA"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/appCompatTextView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+      />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/appCompatTextView2"
         style="@style/TextView.Horizontal"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/fill_out_the_profile_and_go_to_the_application"
         android:textColor="#FAFAFA"
         android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
+        />
 
     <FrameLayout
         android:id="@+id/frameLayout2"
         android:layout_width="0dp"
-        android:layout_height="220dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
+        android:layout_marginBottom="52dp"
         android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2">
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -63,13 +67,12 @@
                 android:id="@+id/emailTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/red"
                 app:boxBackgroundColor="#242235"
-                app:errorEnabled="true"
                 app:boxStrokeColor="@color/gray"
                 app:counterMaxLength="60"
-                android:textColorHint="@color/red"
-                app:hintTextColor="@color/red"
-               >
+                app:errorEnabled="true"
+                app:hintTextColor="@color/red">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextTextEmailAddress"
@@ -80,8 +83,8 @@
                     android:imeOptions="actionGo"
                     android:inputType="textEmailAddress"
                     android:singleLine="true"
-                    tools:ignore="EditableContentDescCheck"
-                    android:textColor="@color/gray"/>
+                    android:textColor="@color/gray"
+                    tools:ignore="EditableContentDescCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -96,24 +99,24 @@
                 android:id="@+id/passwordTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/red"
                 app:boxBackgroundColor="#242235"
-                app:errorEnabled="true"
                 app:boxStrokeColor="@color/gray"
                 app:counterMaxLength="60"
-                android:textColorHint="@color/red"
+                app:errorEnabled="true"
                 app:hintTextColor="@color/red">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextTextPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:imeOptions="actionGo"
-                    android:singleLine="true"
-                    android:textColor="@color/gray"
                     android:layout_gravity="bottom"
                     android:contentDescription="@string/password"
+                    android:imeOptions="actionGo"
                     android:inputType="textPassword"
-                    tools:ignore="EditableContentDescCheck"/>
+                    android:singleLine="true"
+                    android:textColor="@color/gray"
+                    tools:ignore="EditableContentDescCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
@@ -128,9 +131,11 @@
                     android:buttonTint="#FAFAFA"
                     app:layout_constraintBottom_toTopOf="@+id/button5"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/rememberCheck"
                     style="@style/TextView"
                     android:text="@string/remember_me"
                     android:textColor="#B2B2B3"
@@ -139,7 +144,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/appCompatCheckBox" />
             </LinearLayout>
-
 
         </LinearLayout>
     </FrameLayout>
@@ -151,7 +155,7 @@
         android:layout_marginLeft="18dp"
         android:layout_marginRight="18dp"
         android:layout_marginBottom="28dp"
-        android:background="@drawable/button_border_orange"
+        android:background="@drawable/button_selector"
         android:onClick="onClick"
         android:text="@string/register"
         android:textColor="#FAFAFA"
@@ -213,6 +217,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="18dp"

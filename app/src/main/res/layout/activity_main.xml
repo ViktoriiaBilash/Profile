@@ -13,7 +13,7 @@
         app:layout_constraintBottom_toTopOf="@id/view_bottom_container"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="0.5"
-        tools:layout_editor_absoluteX="0dp"/>
+        tools:layout_editor_absoluteX="0dp" />
 
     <View
         android:id="@+id/view_bottom_container"
@@ -36,7 +36,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_view"
@@ -44,46 +45,47 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/name"
         android:foreground="@drawable/ring_icon"
+        android:layout_marginBottom="24dp"
         android:src="@mipmap/icon_foreground"
-        app:layout_constraintBottom_toBottomOf="@+id/view_top_container"
+        app:layout_constraintBottom_toTopOf="@+id/name_text_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view_top_container"
-        app:layout_constraintVertical_bias="0.3"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/name_text_view"
         style="@style/TextView.Horizontal"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/name"
         android:textColor="#FAFAFA"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/career_text_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_view"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/career_text_view"
         style="@style/TextView.Horizontal"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/career"
         android:textColor="#B2B2B3"
         android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/home_address_text_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_text_view"/>
+      />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/home_address_text_view"
         style="@style/TextView.Horizontal"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="53dp"
         android:text="@string/home_address"
         android:textColor="#B2B2B3"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view_top_container"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/career_text_view"/>
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView"
@@ -105,7 +107,8 @@
         android:textAllCaps="false"
         android:textColor="#242235"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/button2"/>
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        android:onClick="logOut"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button2"
@@ -121,13 +124,11 @@
         android:layout_height="60dp"
         android:layout_marginLeft="48dp"
         android:layout_marginRight="48dp"
-        android:layout_marginBottom="36dp"
-        android:foregroundGravity="center_horizontal"
+        android:layout_marginBottom="65dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_top_container"
-        app:layout_constraintVertical_bias="0.75">
+        app:layout_constraintVertical_bias="0.5">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageView2"
