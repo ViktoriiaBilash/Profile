@@ -1,19 +1,32 @@
 package com.example.profile
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.widget.AppCompatTextView
+import com.example.profile.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var setting : SharedPreferences
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        var user = intent.getStringExtra("user name")
-        val out = findViewById<AppCompatTextView>(R.id.name_text_view)
-        out.setText(user)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setting = getSharedPreferences(APP_PREF, Context.MODE_PRIVATE)
+
+        val user = intent.getStringExtra(USER_NAME)
+        binding.nameTextView.text = user
     }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        val editor = setting.edit()
+        editor.clear().apply()
+    }
 }
