@@ -44,6 +44,9 @@ class AuthActivity : AppCompatActivity() {
     private fun setListeners() {
         binding.editTextTextEmailAddress.afterChanged()
         binding.editTextTextPassword.afterChanged()
+        binding.button3.setOnClickListener {
+            onClick()
+        }
     }
 
     private fun TextInputEditText.afterChanged() {
@@ -74,7 +77,7 @@ class AuthActivity : AppCompatActivity() {
         return setting.contains(USER_EMAIL) && setting.contains(USER_PASSWORD)
     }
 
-    fun onClick(view: View) {
+    fun onClick() {
         userEmail = binding.editTextTextEmailAddress.text.toString()
         userPassword = binding.editTextTextPassword.text.toString()
 
@@ -128,6 +131,14 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun parseEmail(userEmail: String): String {
-        return userEmail.substringBefore('@')
+        val separator = userEmail.indexOf(".")
+
+        var user = userEmail.replace(userEmail[0].toString(),userEmail[0].uppercase())
+            user = user.replace(user[separator+1].toString(),user[separator+1].uppercase())
+            user = user.replace(".", " ")
+
+        return user.substringBefore('@')
     }
 }
+
+

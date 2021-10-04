@@ -10,20 +10,20 @@
         android:id="@+id/view_top_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#242235"
+        android:background="@color/navy"
         app:layout_constraintBottom_toTopOf="@id/view_bottom_container"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight="0.5"
+        app:layout_constraintVertical_weight="1"
         tools:layout_editor_absoluteX="0dp" />
 
     <View
         android:id="@+id/view_bottom_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#FAFAFA"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view_top_container"
-        app:layout_constraintVertical_weight="0.5"
+        app:layout_constraintVertical_weight="1"
         tools:layout_editor_absoluteX="0dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -32,7 +32,7 @@
         android:layout_marginStart="17dp"
         android:layout_marginTop="16dp"
         android:text="@string/settings"
-        android:textColor="#FAFAFA"
+        android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.046"
@@ -58,7 +58,7 @@
         style="@style/TextView.Horizontal"
         android:layout_marginBottom="8dp"
         android:text="@string/name"
-        android:textColor="#FAFAFA"
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/career_text_view"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +69,7 @@
         style="@style/TextView.Horizontal"
         android:layout_marginBottom="16dp"
         android:text="@string/career"
-        android:textColor="#B2B2B3"
+        android:textColor="@color/gray_text"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/home_address_text_view"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +81,7 @@
         style="@style/TextView.Horizontal"
         android:layout_marginBottom="53dp"
         android:text="@string/home_address"
-        android:textColor="#B2B2B3"
+        android:textColor="@color/gray_text"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/view_top_container"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +93,7 @@
         style="@style/TextView.Horizontal"
         android:layout_marginBottom="8dp"
         android:text="@string/go_to_settings_and_fill_out_the_profile"
-        android:textColor="#242235"
+        android:textColor="@color/navy"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
@@ -116,7 +116,7 @@
         style="@style/Button"
         android:layout_width="match_parent"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#FB5E06"
+        android:backgroundTint="@color/orange"
         android:text="@string/view_my_contacts"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
