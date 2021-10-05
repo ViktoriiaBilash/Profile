@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import com.example.profile.databinding.ActivityAuthBinding
 import com.google.android.material.textfield.TextInputEditText
 
@@ -22,11 +21,13 @@ class AuthActivity : AppCompatActivity() {
     private lateinit var userEmail: String
     private lateinit var userPassword: String
     private lateinit var binding: ActivityAuthBinding
+    private lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        context = this
         binding = ActivityAuthBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         setting = getSharedPreferences(APP_PREF, Context.MODE_PRIVATE)
@@ -111,11 +112,13 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun showError() {
+        val emailError = context.getString(R.string.email_is_not_valid)
+        val passwordError = context.getString(R.string.password_is_not_valid)
         if (!isValidEmail(userEmail)) {
-            binding.emailTextInputLayout.error = "Email is not valid"
+            binding.emailTextInputLayout.error = emailError
         }
         if (!isValidPassword(userPassword)) {
-            binding.passwordTextInputLayout.error = "Password must contains more than 6 characters"
+            binding.passwordTextInputLayout.error = passwordError
         }
     }
 
@@ -133,9 +136,9 @@ class AuthActivity : AppCompatActivity() {
     private fun parseEmail(userEmail: String): String {
         val separator = userEmail.indexOf(".")
 
-        var user = userEmail.replace(userEmail[0].toString(),userEmail[0].uppercase())
-            user = user.replace(user[separator+1].toString(),user[separator+1].uppercase())
-            user = user.replace(".", " ")
+        var user = userEmail.replace(userEmail[0].toString(), userEmail[0].uppercase())
+        user = user.replace(user[separator + 1].toString(), user[separator + 1].uppercase())
+        user = user.replace(".", " ")
 
         return user.substringBefore('@')
     }

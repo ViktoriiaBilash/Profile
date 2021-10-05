@@ -11,9 +11,8 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-
-
         <item name="android:windowAnimationStyle">@style/WindowAnimations</item>
+
     </style>
 
     <style name="WindowAnimations">
@@ -23,7 +22,7 @@
         <item name="android:activityCloseExitAnimation">@anim/exit_activity</item>
     </style>
 
-    <style name= "TextView">
+    <style name="TextView">
         <item name="android:layout_width">wrap_content</item>>
         <item name="android:layout_height">wrap_content</item>>
         <item name="fontFamily">@font/open_sans_semibold</item>
@@ -33,15 +32,15 @@
         <item name="layout_constraintHorizontal_bias">0.5</item>
     </style>
 
- <style name="Button">
-     <item name="android:layout_height">55dp</item>
-     <item name="android:layout_marginStart">16dp</item>
-     <item name="android:layout_marginEnd">16dp</item>
-     <item name="android:fontFamily">@font/open_sans_semibold</item>
-     <item name="layout_constraintEnd_toEndOf">parent</item>
-     <item name="layout_constraintStart_toStartOf">parent</item>
-     <item name="layout_constraintHorizontal_bias">0.5</item>
- </style>
+    <style name="Button">
+        <item name="android:layout_height">55dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintHorizontal_bias">0.5</item>
+    </style>
 
 
 </resources>
