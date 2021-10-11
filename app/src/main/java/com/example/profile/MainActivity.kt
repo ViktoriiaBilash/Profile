@@ -21,12 +21,18 @@ class MainActivity : AppCompatActivity() {
         setting = getSharedPreferences(APP_PREF, Context.MODE_PRIVATE)
 
         val user = intent.getStringExtra(USER_NAME)
-        binding.nameTextView.text = user
+        binding.tvName.text = user
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onBackPressed() {
+        super.onBackPressed()
         val editor = setting.edit()
         editor.clear().apply()
     }
+//
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        val editor = setting.edit()
+//        editor.clear().apply()
+//    }
 }

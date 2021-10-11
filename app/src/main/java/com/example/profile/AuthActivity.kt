@@ -5,14 +5,15 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
+import android.util.Log
+import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doOnTextChanged
 import com.example.profile.databinding.ActivityAuthBinding
 import com.google.android.material.textfield.TextInputEditText
+import java.util.regex.Pattern
 
 const val APP_PREF = "APP_PREFERENCES"
 const val USER_EMAIL = "USER_EMAIL"
-const val USER_PASSWORD = "USER_PASSWORD"
 const val USER_NAME = "USER_NAME"
 
 class AuthActivity : AppCompatActivity() {
@@ -21,11 +22,9 @@ class AuthActivity : AppCompatActivity() {
     private lateinit var userEmail: String
     private lateinit var userPassword: String
     private lateinit var binding: ActivityAuthBinding
-    private lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        context = this
         binding = ActivityAuthBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
@@ -33,58 +32,47 @@ class AuthActivity : AppCompatActivity() {
         setting = getSharedPreferences(APP_PREF, Context.MODE_PRIVATE)
 
         setListeners()
-        isAutoLogin()
+        checkAutologin()
     }
+//  startActivity finish
 
-    override fun onStop() {
-        super.onStop()
-        binding.editTextTextEmailAddress.text = null
-        binding.editTextTextPassword.text = null
-    }
+//    override fun onStop() {
+//        super.onStop()
+//        binding.editTextTextEmailAddress.text = null
+//        binding.editTextTextPassword.text = null
+//    }
 
     private fun setListeners() {
-        binding.editTextTextEmailAddress.afterChanged()
-        binding.editTextTextPassword.afterChanged()
-        binding.button3.setOnClickListener {
+        binding.editTextEmail.doOnTextChanged { text, start, before, count ->
+            binding.inputTextEmail.error = null
+        }
+        binding.editTextPassword.doOnTextChanged { text, start, before, count ->
+            binding.inputTextPassword.error = null
+        }
+        binding.btnRegister.setOnClickListener {
             onClick()
         }
     }
 
-    private fun TextInputEditText.afterChanged() {
-        this.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p: CharSequence?, start: Int, count: Int, end: Int) {
-            }
-
-            override fun onTextChanged(p: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.emailTextInputLayout.error = null
-                binding.passwordTextInputLayout.error = null
-            }
-
-            override fun afterTextChanged(p: Editable?) {
-            }
-        })
-    }
-
-    private fun isAutoLogin() {
-        if (autoLogin()) {
+    private fun checkAutologin() {
+        if (iaAutoLogin()) {
             userEmail = setting.getString(USER_EMAIL, "").toString()
-            userPassword = setting.getString(USER_PASSWORD, "").toString()
-
             startActivityAuth()
         }
     }
 
-    private fun autoLogin(): Boolean {
-        return setting.contains(USER_EMAIL) && setting.contains(USER_PASSWORD)
+    private fun iaAutoLogin(): Boolean {
+        return setting.contains(USER_EMAIL)
     }
 
-    fun onClick() {
-        userEmail = binding.editTextTextEmailAddress.text.toString()
-        userPassword = binding.editTextTextPassword.text.toString()
+    private fun onClick() {
+        userEmail = binding.editTextEmail.text.toString()
+        userPassword = binding.editTextPassword.text.toString()
 
         if (isValidEmail(userEmail) && isValidPassword(userPassword)) {
             rememberUser()
             startActivityAuth()
+          //  finish()
         } else {
             showError()
         }
@@ -92,33 +80,34 @@ class AuthActivity : AppCompatActivity() {
 
     private fun startActivityAuth() {
         val registerIntent = Intent(this, MainActivity::class.java)
+        with(registerIntent) {
+            putExtra(USER_EMAIL, userEmail)
+            putExtra(USER_NAME, parseEmail(userEmail))
+        }
 
-        registerIntent.putExtra(USER_EMAIL, userEmail)
-            .putExtra(USER_NAME, parseEmail(userEmail))
-            .putExtra(USER_PASSWORD, userPassword)
+//        registerIntent.putExtra(USER_EMAIL, userEmail)
+//            .putExtra(USER_NAME, parseEmail(userEmail))
+//
 
         startActivity(registerIntent)
     }
 
     private fun rememberUser() {
-        val checkBox = binding.appCompatCheckBox
-
+        val checkBox = binding.checkBoxRememberMe
         if (checkBox.isChecked) {
             val editor = setting.edit()
-            editor.putString(USER_EMAIL, userEmail)
-                .putString(USER_PASSWORD, userPassword)
-                .apply()
+            editor.putString(USER_EMAIL, userEmail).apply()
         }
     }
 
     private fun showError() {
-        val emailError = context.getString(R.string.email_is_not_valid)
-        val passwordError = context.getString(R.string.password_is_not_valid)
+        val emailError = getString(R.string.email_is_not_valid)
+        val passwordError = getString(R.string.password_is_not_valid)
         if (!isValidEmail(userEmail)) {
-            binding.emailTextInputLayout.error = emailError
+            binding.inputTextEmail.error = emailError
         }
         if (!isValidPassword(userPassword)) {
-            binding.passwordTextInputLayout.error = passwordError
+            binding.inputTextPassword.error = passwordError
         }
     }
 
@@ -129,8 +118,8 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun isValidEmail(email: String): Boolean {
-        val requiredTag = '@'
-        return email.contains(requiredTag)
+        val requiredTag = "@"
+        return requiredTag.toRegex().containsMatchIn(email)
     }
 
     private fun parseEmail(userEmail: String): String {
@@ -143,5 +132,6 @@ class AuthActivity : AppCompatActivity() {
         return user.substringBefore('@')
     }
 }
+
 
 

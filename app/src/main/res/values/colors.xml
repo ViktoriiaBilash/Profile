@@ -7,13 +7,19 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="gray">#BDBDBD</color>
+    <color name="gray_light">#BDBDBD</color>
     <color name="red">#C50505</color>
     <color name="navy">#242235</color>
+    <color name="gray_dark">#18181F</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">
         #B2B2B3
     </color>
-    <color name="gray_text">#B2B2B3</color>
+
+
+    <color name="gray">#B2B2B3</color>
     <color name="orange">#FB5E06</color>
+    <color name="dark_navy">#3D3A63</color>
+    <color name="purple">#8F429C</color>
+    <color name="light_navy">#413E60</color>
 
 </resources>
