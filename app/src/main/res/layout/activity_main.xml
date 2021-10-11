@@ -87,7 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/linearLayout_main_bottomBtnContainer"
+        app:layout_constraintBottom_toTopOf="@+id/tv_go_to_setting"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_top_background">
@@ -130,45 +130,42 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout_main_bottomBtnContainer"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_go_to_setting"
+        style="@style/TextView.ColorNavy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/go_to_settings_and_fill_out_the_profile"
+        android:textSize="@dimen/text_size_14sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_edit_profile"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_edit_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:text="@string/edit_profile"
+        android:textAllCaps="false"
+        android:theme="@style/Button.ButtonNavyStroke"
+        app:backgroundTint="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_view_contacts"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_view_contacts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_16dp"
-        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/margin_16dp"
+        android:text="@string/view_my_contacts"
+        android:theme="@style/Button.ButtonFullOrange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_go_to_setting"
-            style="@style/TextView.ColorNavy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_16dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/go_to_settings_and_fill_out_the_profile"
-            android:textSize="@dimen/text_size_14sp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_edit_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_16dp"
-            android:layout_weight="1"
-            android:text="@string/edit_profile"
-            android:textAllCaps="false"
-            android:theme="@style/Button.ButtonNavyStroke"
-            app:backgroundTint="@android:color/transparent" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_view_contacts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/view_my_contacts"
-            android:theme="@style/Button.ButtonFullOrange" />
-    </LinearLayout>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

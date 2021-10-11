@@ -11,19 +11,20 @@
         android:id="@+id/layout_header_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_64dp"
         android:gravity="center"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/layout_middle_fields"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_title"
             style="@style/TextView.ColorWhite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_8dp"
+            android:paddingEnd="@dimen/margin_8dp"
             android:text="@string/let_s_get_acquainted"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="parent"
@@ -50,6 +51,7 @@
         android:layout_marginStart="@dimen/margin_16dp"
         android:layout_marginEnd="@dimen/margin_16dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btn_google"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_header_title">
@@ -73,25 +75,25 @@
                 android:inputType="textEmailAddress"
                 android:singleLine="true" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputText_password"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/password"
-            app:counterMaxLength="60"
-            app:errorEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editText_password"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputText_password"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/password"
-                android:inputType="textPassword"
-                android:singleLine="true" />
+                android:hint="@string/password"
+                app:counterMaxLength="60"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_password"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/password"
+                    android:inputType="textPassword"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,85 +105,96 @@
             android:text="@string/remember_me" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/layout_body_buttons"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_google"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_16dp"
         android:layout_marginEnd="@dimen/margin_16dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/layout_footer"
+        android:text="@string/google"
+        android:theme="@style/Button.ButtonFullWhite"
+        app:icon="@drawable/google_icon"
+        app:iconGravity="textStart"
+        app:iconTint="@android:color/transparent"
+        app:iconTintMode="add"
+        app:layout_constraintBottom_toTopOf="@+id/tv_or"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/google"
-            android:theme="@style/Button.ButtonFullWhite"
-            app:icon="@drawable/google_icon"
-            app:iconGravity="textStart"
-            app:iconTint="@android:color/transparent"
-            app:iconTintMode="add" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_or"
+        style="@style/TextView.ColorWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/margin_4dp"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:text="@string/or"
+        android:textSize="@dimen/text_size_18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/TextView.ColorWhite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/margin_4dp"
-            android:text="@string/or"
-            android:textSize="@dimen/text_size_18sp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_8dp"
-            android:text="@string/register"
-            android:theme="@style/Button.ButtonOrangeStroke" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/TextView.ColorWhite"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/margin_8dp"
-            android:gravity="center_horizontal"
-            android:text="@string/by_clicking_register_you_agree_to_our_terms_nand_conditions"
-            android:textSize="@dimen/text_size_14sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_footer"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_16dp"
         android:layout_marginEnd="@dimen/margin_16dp"
-        android:layout_marginBottom="@dimen/margin_16dp"
-        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/margin_8dp"
+        android:text="@string/register"
+        android:theme="@style/Button.ButtonOrangeStroke"
+        app:layout_constraintBottom_toTopOf="@+id/tv_agreeTerms"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_agreeTerms"
+        style="@style/TextView.ColorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:layout_marginBottom="@dimen/margin_8dp"
+        android:gravity="center_horizontal"
+        android:text="@string/by_clicking_register_you_agree_to_our_terms_nand_conditions"
+        android:textSize="@dimen/text_size_14sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_haveAccount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_haveAccount"
+        style="@style/TextView.ColorGray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_weight="1"
+        android:text="@string/already_have_an_account"
+        android:textSize="@dimen/text_size_14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_sign_in"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="@dimen/margin_8dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_sign_in"
+        style="@style/TextView.ColorWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_weight="1"
+        android:gravity="end"
+        android:text="@string/sign_in"
+        android:textSize="@dimen/text_size_14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toEndOf="@+id/tv_haveAccount"
+        android:layout_marginBottom="@dimen/margin_8dp"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/TextView.ColorGray"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_weight="1"
-            android:text="@string/already_have_an_account"
-            android:textSize="@dimen/text_size_14sp" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/TextView.ColorWhite"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:text="@string/sign_in"
-            android:textSize="@dimen/text_size_14sp" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

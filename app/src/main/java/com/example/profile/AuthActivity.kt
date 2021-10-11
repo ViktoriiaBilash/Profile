@@ -56,14 +56,16 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        binding.editTextEmail.doOnTextChanged { _, _, _, _ ->
-            binding.inputTextEmail.error = null
-        }
-        binding.editTextPassword.doOnTextChanged { _, _, _, _ ->
-            binding.inputTextPassword.error = null
-        }
-        binding.btnRegister.setOnClickListener {
-            onClick()
+        with(binding){
+            editTextEmail.doOnTextChanged { _, _, _, _ ->
+                inputTextEmail.error = null
+            }
+            editTextPassword.doOnTextChanged { _, _, _, _ ->
+               inputTextPassword.error = null
+            }
+            btnRegister.setOnClickListener {
+                onClick()
+            }
         }
     }
 
