@@ -20,15 +20,19 @@
         <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/drawable/icon_background.xml" value="0.2703125" />
         <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/drawable/in_foreground.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/drawable/rect_fafafa.xml" value="0.536" />
+        <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/drawable/rect_white.xml" value="0.14166666666666666" />
         <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/drawable/rectangles_corners.xml" value="0.2703125" />
         <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/drawable/ring_icon.xml" value="0.2703125" />
         <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/drawable/stroke_color.xml" value="0.2546875" />
         <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/drawable/vk_background.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/drawable/vk_foreground.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/layout-v23/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/layout/activity_auth.xml" value="0.4" />
-        <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/layout/activity_auth.xml" value="0.264" />
+        <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/mipmap-anydpi-v26/f.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/mipmap-anydpi-v26/f_round.xml" value="0.20925925925925926" />
+        <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/mipmap-anydpi-v26/google.xml" value="0.20925925925925926" />
+        <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/mipmap-anydpi-v26/google_round.xml" value="0.20925925925925926" />
         <entry key="..\:/Users/viktoriya/AndroidStudioProjects/Profile/app/src/main/res/mipmap-anydpi-v26/icon.xml" value="0.2703125" />
       </map>
     </option>

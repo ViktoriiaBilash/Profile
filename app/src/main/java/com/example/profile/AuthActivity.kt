@@ -5,16 +5,14 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import com.example.profile.databinding.ActivityAuthBinding
-import com.google.android.material.textfield.TextInputEditText
-import java.util.regex.Pattern
 
 const val APP_PREF = "APP_PREFERENCES"
 const val USER_EMAIL = "USER_EMAIL"
 const val USER_NAME = "USER_NAME"
+const val USER_PASSWORD = "USER_PASSWORD"
+const val CHECK_BOX = "CHECK_BOX"
 
 class AuthActivity : AppCompatActivity() {
 
@@ -26,27 +24,42 @@ class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAuthBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
-
         setting = getSharedPreferences(APP_PREF, Context.MODE_PRIVATE)
 
         setListeners()
         checkAutologin()
     }
-//  startActivity finish
 
-//    override fun onStop() {
-//        super.onStop()
-//        binding.editTextTextEmailAddress.text = null
-//        binding.editTextTextPassword.text = null
-//    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        val email = binding.editTextEmail.text.toString()
+        val password = binding.editTextPassword.text.toString()
+        val checkBox = binding.checkBoxRememberMe.isChecked
+
+        outState.putString(USER_EMAIL, email)
+        outState.putString(USER_PASSWORD, password)
+        outState.putBoolean(CHECK_BOX, checkBox)
+
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val email = savedInstanceState.get(USER_EMAIL)
+        val password = savedInstanceState.get(USER_PASSWORD)
+        val checkBox = savedInstanceState.get(CHECK_BOX)
+
+        binding.editTextEmail.setText(email.toString())
+        binding.editTextPassword.setText(password.toString())
+        if (checkBox == true)
+            binding.checkBoxRememberMe.isChecked
+    }
 
     private fun setListeners() {
-        binding.editTextEmail.doOnTextChanged { text, start, before, count ->
+        binding.editTextEmail.doOnTextChanged { _, _, _, _ ->
             binding.inputTextEmail.error = null
         }
-        binding.editTextPassword.doOnTextChanged { text, start, before, count ->
+        binding.editTextPassword.doOnTextChanged { _, _, _, _ ->
             binding.inputTextPassword.error = null
         }
         binding.btnRegister.setOnClickListener {
@@ -72,7 +85,7 @@ class AuthActivity : AppCompatActivity() {
         if (isValidEmail(userEmail) && isValidPassword(userPassword)) {
             rememberUser()
             startActivityAuth()
-          //  finish()
+            finish()
         } else {
             showError()
         }
@@ -84,11 +97,6 @@ class AuthActivity : AppCompatActivity() {
             putExtra(USER_EMAIL, userEmail)
             putExtra(USER_NAME, parseEmail(userEmail))
         }
-
-//        registerIntent.putExtra(USER_EMAIL, userEmail)
-//            .putExtra(USER_NAME, parseEmail(userEmail))
-//
-
         startActivity(registerIntent)
     }
 

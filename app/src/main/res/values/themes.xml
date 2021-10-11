@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/gray_light</item>
+        <item name="android:textColorPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -18,8 +19,9 @@
         <item name="android:background">@color/navy</item>
     </style>
 
-
-
+    <style name="ViewBackgroundLight">
+        <item name="android:background">@color/white</item>
+    </style>
 
     <style name="Widget.MaterialComponents.TextInputLayout.FilledBox" parent="Base.Widget.MaterialComponents.TextInputLayout">
         <item name="materialThemeOverlay">
@@ -33,6 +35,7 @@
         <item name="boxStrokeColor">@color/gray_light</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="android:textColor">@color/white</item>
+        <item name="hintTextColor">@color/white</item>
         <item name="shapeAppearanceOverlay">
             @style/ShapeAppearanceOverlay.MaterialComponents.TextInputLayout.FilledBox
         </item>
@@ -65,7 +68,7 @@
         <item name="fontFamily">@font/open_sans_semibold</item>
     </style>
 
-    <style name="Button.ButtonFullWhite">
+    <style name="Button.ButtonFullWhite" parent="Widget.MaterialComponents.Button.TextButton.Icon">
         <item name="colorPrimary">@color/white</item>
         <item name="colorOnPrimary">@color/gray_dark</item>
 
@@ -77,7 +80,7 @@
 
     </style>
 
-    <style name="Button.ButtonOrangeStroke">
+    <style name="Button.ButtonOrangeStroke" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorPrimary">@color/navy</item>
         <item name="cornerRadius">5dp</item>
@@ -85,7 +88,7 @@
         <item name="strokeWidth">2dp</item>
     </style>
 
-    <style name="Button.ButtonNavyStroke">
+    <style name="Button.ButtonNavyStroke" parent="Widget.MaterialComponents.Button.TextButton.Icon">
         <item name="colorOnPrimary">@color/navy</item>
         <item name="colorPrimary">@color/white</item>
         <item name="cornerRadius">5dp</item>

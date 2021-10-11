@@ -107,12 +107,12 @@
         android:id="@+id/layout_body_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/layout_footer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="@dimen/margin_16dp"
-        android:layout_marginEnd="@dimen/margin_16dp">
+        app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
@@ -142,9 +142,9 @@
             android:theme="@style/Button.ButtonOrangeStroke" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TextView.ColorWhite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/TextView.ColorWhite"
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/margin_8dp"
             android:gravity="center_horizontal"
@@ -156,32 +156,32 @@
         android:id="@+id/layout_footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
         android:layout_marginBottom="@dimen/margin_16dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="@dimen/margin_16dp"
-        android:layout_marginEnd="@dimen/margin_16dp">
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TextView.ColorGray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="@style/TextView.ColorGray"
             android:layout_gravity="start"
+            android:layout_weight="1"
             android:text="@string/already_have_an_account"
             android:textSize="@dimen/text_size_14sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TextView.ColorWhite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/TextView.ColorWhite"
             android:layout_gravity="end"
-            android:text="@string/sign_in"
             android:layout_weight="1"
-            android:textSize="@dimen/text_size_14sp"
-            android:gravity="end"/>
+            android:gravity="end"
+            android:text="@string/sign_in"
+            android:textSize="@dimen/text_size_14sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.profile
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,7 +9,7 @@ import com.example.profile.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var setting : SharedPreferences
+    private lateinit var setting: SharedPreferences
 
     private lateinit var binding: ActivityMainBinding
 
@@ -17,7 +18,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setting = getSharedPreferences(APP_PREF, Context.MODE_PRIVATE)
 
         val user = intent.getStringExtra(USER_NAME)
@@ -28,11 +28,8 @@ class MainActivity : AppCompatActivity() {
         super.onBackPressed()
         val editor = setting.edit()
         editor.clear().apply()
+
+        val authIntent = Intent(this, AuthActivity::class.java)
+        startActivity(authIntent)
     }
-//
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        val editor = setting.edit()
-//        editor.clear().apply()
-//    }
 }
