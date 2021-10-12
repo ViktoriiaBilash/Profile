@@ -3,16 +3,13 @@ package com.example.profile
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Patterns
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import com.example.profile.databinding.ActivityAuthBinding
-
-const val APP_PREF = "APP_PREFERENCES"
-const val USER_EMAIL = "USER_EMAIL"
-const val USER_NAME = "USER_NAME"
-const val USER_PASSWORD = "USER_PASSWORD"
-const val CHECK_BOX = "CHECK_BOX"
+import com.example.profile.utils.Constants
 
 class AuthActivity : AppCompatActivity() {
 
@@ -25,7 +22,7 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setting = getSharedPreferences(APP_PREF, Context.MODE_PRIVATE)
+        setting = getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE)
 
         setListeners()
         checkAutologin()
@@ -36,51 +33,53 @@ class AuthActivity : AppCompatActivity() {
         val password = binding.editTextPassword.text.toString()
         val checkBox = binding.checkBoxRememberMe.isChecked
 
-        outState.putString(USER_EMAIL, email)
-        outState.putString(USER_PASSWORD, password)
-        outState.putBoolean(CHECK_BOX, checkBox)
-
+        with(outState) {
+            putString(Constants.USER_EMAIL, email)
+            putString(Constants.USER_PASSWORD, password)
+            putBoolean(Constants.CHECK_BOX, checkBox)
+        }
         super.onSaveInstanceState(outState)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        val email = savedInstanceState.get(USER_EMAIL)
-        val password = savedInstanceState.get(USER_PASSWORD)
-        val checkBox = savedInstanceState.get(CHECK_BOX)
+        val email = savedInstanceState.get(Constants.USER_EMAIL)
+        val password = savedInstanceState.get(Constants.USER_PASSWORD)
+        val checkBox = savedInstanceState.get(Constants.CHECK_BOX)
 
-        binding.editTextEmail.setText(email.toString())
-        binding.editTextPassword.setText(password.toString())
-        if (checkBox == true)
-            binding.checkBoxRememberMe.isChecked
+        with(binding) {
+            editTextEmail.setText(email.toString())
+            editTextPassword.setText(password.toString())
+            checkBoxRememberMe.isChecked = checkBox as Boolean
+        }
     }
 
     private fun setListeners() {
-        with(binding){
+        with(binding) {
             editTextEmail.doOnTextChanged { _, _, _, _ ->
                 inputTextEmail.error = null
             }
             editTextPassword.doOnTextChanged { _, _, _, _ ->
-               inputTextPassword.error = null
+                inputTextPassword.error = null
             }
             btnRegister.setOnClickListener {
-                onClick()
+                goToMyProfile()
             }
         }
     }
 
     private fun checkAutologin() {
-        if (iaAutoLogin()) {
-            userEmail = setting.getString(USER_EMAIL, "").toString()
+        if (isAutoLogin()) {
+            userEmail = setting.getString(Constants.USER_EMAIL, "").toString()
             startActivityAuth()
         }
     }
 
-    private fun iaAutoLogin(): Boolean {
-        return setting.contains(USER_EMAIL)
+    private fun isAutoLogin(): Boolean {
+        return setting.contains(Constants.USER_EMAIL)
     }
 
-    private fun onClick() {
+    private fun goToMyProfile() {
         userEmail = binding.editTextEmail.text.toString()
         userPassword = binding.editTextPassword.text.toString()
 
@@ -89,15 +88,15 @@ class AuthActivity : AppCompatActivity() {
             startActivityAuth()
             finish()
         } else {
-            showError()
+            showErrors()
         }
     }
 
     private fun startActivityAuth() {
         val registerIntent = Intent(this, MainActivity::class.java)
         with(registerIntent) {
-            putExtra(USER_EMAIL, userEmail)
-            putExtra(USER_NAME, parseEmail(userEmail))
+            putExtra(Constants.USER_EMAIL, userEmail)
+            putExtra(Constants.USER_NAME, parseEmail(userEmail))
         }
         startActivity(registerIntent)
     }
@@ -106,11 +105,11 @@ class AuthActivity : AppCompatActivity() {
         val checkBox = binding.checkBoxRememberMe
         if (checkBox.isChecked) {
             val editor = setting.edit()
-            editor.putString(USER_EMAIL, userEmail).apply()
+            editor.putString(Constants.USER_EMAIL, userEmail).apply()
         }
     }
 
-    private fun showError() {
+    private fun showErrors() {
         val emailError = getString(R.string.email_is_not_valid)
         val passwordError = getString(R.string.password_is_not_valid)
         if (!isValidEmail(userEmail)) {
@@ -122,23 +121,19 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun isValidPassword(userPassword: String): Boolean {
-        val minLengthPass = 6
-        val maxLengthPass = 60
-        return userPassword.length in minLengthPass..maxLengthPass
+        return userPassword.length in Constants.MIN_LENGTH_PASSWORD..Constants.MAX_LENGTH_PASSWORD
     }
 
     private fun isValidEmail(email: String): Boolean {
-        val requiredTag = "@"
-        return requiredTag.toRegex().containsMatchIn(email)
+        return (!TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches())
     }
 
     private fun parseEmail(userEmail: String): String {
         val separator = userEmail.indexOf(".")
 
-        var user = userEmail.replace(userEmail[0].toString(), userEmail[0].uppercase())
-        user = user.replace(user[separator + 1].toString(), user[separator + 1].uppercase())
-        user = user.replace(".", " ")
-
+        var user = userEmail.replaceFirst(userEmail[0].toString(), userEmail[0].uppercase())
+        user = user.replaceFirst(user[separator + 1].toString(), user[separator + 1].uppercase())
+        user = user.replaceFirst(".", " ")
         return user.substringBefore('@')
     }
 }

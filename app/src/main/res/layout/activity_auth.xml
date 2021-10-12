@@ -24,9 +24,8 @@
             style="@style/TextView.ColorWhite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingEnd="@dimen/margin_8dp"
             android:text="@string/let_s_get_acquainted"
-            android:textSize="24sp"
+            android:textSize="@dimen/text_size_24sp"
             app:layout_constraintBottom_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -37,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/fill_out_the_profile_and_go_to_the_application"
-            android:textSize="12sp"
+            android:textSize="@dimen/text_size_12sp"
             app:layout_constraintBottom_toTopOf="@+id/layout_middle_fields"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -172,14 +171,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
+        android:layout_marginBottom="@dimen/margin_8dp"
         android:layout_weight="1"
         android:text="@string/already_have_an_account"
         android:textSize="@dimen/text_size_14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tv_sign_in"
         app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="@dimen/margin_8dp"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_sign_in"
@@ -187,14 +186,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
+        android:layout_marginBottom="@dimen/margin_8dp"
         android:layout_weight="1"
         android:gravity="end"
         android:text="@string/sign_in"
         android:textSize="@dimen/text_size_14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_haveAccount"
-        android:layout_marginBottom="@dimen/margin_8dp"/>
+        app:layout_constraintStart_toEndOf="@+id/tv_haveAccount" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
