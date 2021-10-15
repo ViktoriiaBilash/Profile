@@ -50,9 +50,6 @@
 
     <style name="TextView">
         <item name="fontFamily">@font/open_sans_semibold</item>
-    </style>
-
-    <style name="TextView.ColorWhite">
         <item name="android:textColor">@color/white</item>
     </style>
 
@@ -66,16 +63,20 @@
 
     <style name="Button">
         <item name="fontFamily">@font/open_sans_semibold</item>
+        <item name="android:backgroundTint">@color/navy</item>
     </style>
 
     <style name="Button.ButtonFullWhite" parent="Widget.MaterialComponents.Button.TextButton.Icon">
         <item name="colorPrimary">@color/white</item>
-        <item name="colorOnPrimary">@color/gray_dark</item>
-
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconTint">@android:color/transparent</item>
+        <item name="iconTintMode">add</item>
+        <item name="colorOnPrimary">@color/navy</item>
     </style>
 
     <style name="Button.ButtonFullOrange">
-        <item name="colorPrimary">@color/orange</item>
+        <item name="android:backgroundTint">@color/orange</item>
         <item name="colorOnPrimary">@color/white</item>
 
     </style>
@@ -89,8 +90,7 @@
     </style>
 
     <style name="Button.ButtonNavyStroke" parent="Widget.MaterialComponents.Button.TextButton.Icon">
-        <item name="colorOnPrimary">@color/navy</item>
-        <item name="colorPrimary">@color/white</item>
+        <item name="android:textColor">@color/navy</item>
         <item name="cornerRadius">5dp</item>
         <item name="strokeColor">@color/navy</item>
         <item name="strokeWidth">2dp</item>

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/layout_middle_fields"
+        app:layout_constraintBottom_toTopOf="@+id/layout_auth_fields"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,34 +21,28 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_title"
-            style="@style/TextView.ColorWhite"
+            style="@style/TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/let_s_get_acquainted"
-            android:textSize="@dimen/text_size_24sp"
-            app:layout_constraintBottom_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:text="@string/auth_title_text"
+            android:textSize="@dimen/size_title_text" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_subtitle"
-            style="@style/TextView.ColorWhite"
+            style="@style/TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/fill_out_the_profile_and_go_to_the_application"
-            android:textSize="@dimen/text_size_12sp"
-            app:layout_constraintBottom_toTopOf="@+id/layout_middle_fields"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:text="@string/auth_subtitle_text"
+            android:textSize="@dimen/size_subtitle_text" />
     </LinearLayout>
 
 
     <LinearLayout
-        android:id="@+id/layout_middle_fields"
+        android:id="@+id/layout_auth_fields"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_16dp"
-        android:layout_marginEnd="@dimen/margin_16dp"
+        android:layout_marginStart="@dimen/margin_all_large"
+        android:layout_marginEnd="@dimen/margin_all_large"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/btn_google"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +55,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/e_mail"
+            android:hint="@string/auth_e_mail_hint"
             app:counterMaxLength="60"
             app:errorEnabled="true">
 
@@ -70,29 +64,30 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/e_mail"
+                android:contentDescription="@string/auth_e_mail_hint"
                 android:inputType="textEmailAddress"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:imeOptions="actionNext"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputText_password"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputText_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/auth_password_hint"
+            app:counterMaxLength="60"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_password"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/password"
-                app:counterMaxLength="60"
-                app:errorEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editText_password"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/password"
-                    android:inputType="textPassword"
-                    android:singleLine="true" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+                android:contentDescription="@string/auth_password_hint"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:imeOptions="actionDone"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,16 +96,17 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/remember_me" />
+            android:text="@string/auth_remember_me_check_box" />
+
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_google"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_16dp"
-        android:layout_marginEnd="@dimen/margin_16dp"
-        android:text="@string/google"
+        android:layout_marginStart="@dimen/margin_all_large"
+        android:layout_marginEnd="@dimen/margin_all_large"
+        android:text="@string/auth_google_button"
         android:theme="@style/Button.ButtonFullWhite"
         app:icon="@drawable/google_icon"
         app:iconGravity="textStart"
@@ -122,15 +118,15 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_or"
-        style="@style/TextView.ColorWhite"
+        style="@style/TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/margin_4dp"
-        android:layout_marginStart="@dimen/margin_16dp"
-        android:layout_marginEnd="@dimen/margin_16dp"
-        android:text="@string/or"
-        android:textSize="@dimen/text_size_18sp"
+        android:layout_margin="@dimen/margin_all_small"
+        android:layout_marginStart="@dimen/margin_all_large"
+        android:layout_marginEnd="@dimen/margin_all_large"
+        android:text="@string/auth_or_text"
+        android:textSize="@dimen/size_heading_text"
         app:layout_constraintBottom_toTopOf="@+id/btn_register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -139,10 +135,10 @@
         android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_16dp"
-        android:layout_marginEnd="@dimen/margin_16dp"
-        android:layout_marginBottom="@dimen/margin_8dp"
-        android:text="@string/register"
+        android:layout_marginStart="@dimen/margin_all_large"
+        android:layout_marginEnd="@dimen/margin_all_large"
+        android:layout_marginBottom="@dimen/margin_all_normal"
+        android:text="@string/auth_register_button"
         android:theme="@style/Button.ButtonOrangeStroke"
         app:layout_constraintBottom_toTopOf="@+id/tv_agreeTerms"
         app:layout_constraintEnd_toEndOf="parent"
@@ -150,16 +146,16 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_agreeTerms"
-        style="@style/TextView.ColorWhite"
+        style="@style/TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="@dimen/margin_16dp"
-        android:layout_marginEnd="@dimen/margin_16dp"
-        android:layout_marginBottom="@dimen/margin_8dp"
+        android:layout_marginStart="@dimen/margin_all_large"
+        android:layout_marginEnd="@dimen/margin_all_large"
+        android:layout_marginBottom="@dimen/margin_all_normal"
         android:gravity="center_horizontal"
-        android:text="@string/by_clicking_register_you_agree_to_our_terms_nand_conditions"
-        android:textSize="@dimen/text_size_14sp"
+        android:text="@string/auth_agreement_with_terms_text"
+        android:textSize="@dimen/size_footnote_text"
         app:layout_constraintBottom_toTopOf="@+id/tv_haveAccount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -171,10 +167,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginBottom="@dimen/margin_8dp"
+        android:layout_marginBottom="@dimen/margin_all_normal"
         android:layout_weight="1"
-        android:text="@string/already_have_an_account"
-        android:textSize="@dimen/text_size_14sp"
+        android:text="@string/auth_footer_text"
+        android:textSize="@dimen/size_footnote_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tv_sign_in"
         app:layout_constraintHorizontal_chainStyle="spread"
@@ -182,15 +178,15 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_sign_in"
-        style="@style/TextView.ColorWhite"
+        style="@style/TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:layout_marginBottom="@dimen/margin_8dp"
+        android:layout_marginBottom="@dimen/margin_all_normal"
         android:layout_weight="1"
         android:gravity="end"
-        android:text="@string/sign_in"
-        android:textSize="@dimen/text_size_14sp"
+        android:text="@string/auth_sign_in_button"
+        android:textSize="@dimen/size_footnote_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_haveAccount" />

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Profile">
         <activity
+            android:name=".MyContactsActivity"
+            android:exported="true" />
+        <activity
             android:name=".AuthActivity"
             android:exported="true"
             android:screenOrientation="portrait">
@@ -19,13 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true"></activity>
     </application>
 
 </manifest>

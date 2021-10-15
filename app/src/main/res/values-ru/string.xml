@@ -1,26 +1,25 @@
 <resources>
     <string name="app_name">Профиль</string>
-    <string name="career">Карьера</string>
-    <string name="user_name">Имя</string>
-    <string name="settings">Настройки</string>
-    <string name="home_address">Домашний адрес</string>
-    <string name="go_to_settings_and_fill_out_the_profile">Зайдите в настройки и заполните профиль</string>
-    <string name="edit_profile">Изменить профиль</string>
-    <string name="view_my_contacts">Показать контакты</string>
-    <string name="facebook" translatable="false">Facebook</string>
-    <string name="instagram" translatable="false">Instagram</string>
-    <string name="vkontakte" translatable="false">Vkontakte</string>
-    <string name="register">Регистрация</string>
-    <string name="by_clicking_register_you_agree_to_our_terms_nand_conditions">Нажимая «Зарегистрироваться», вы соглашаетесь с Условиями.</string>
-    <string name="already_have_an_account">Уже есть аккаунт?</string>
-    <string name="sign_in">Войти</string>
-    <string name="or">или</string>
-    <string name="google" translatable="false">GOOGLE</string>
-    <string name="remember_me">Запомнить меня</string>
-    <string name="password">Пароль</string>
-    <string name="let_s_get_acquainted">Давайте знакомиться</string>
-    <string name="fill_out_the_profile_and_go_to_the_application">Заполните анкету и войдите в приложение!</string>
-    <string name="e_mail" translatable="false">E-mail</string>
-    <string name="email_is_not_valid">Значение не допустимо</string>
-    <string name="password_is_not_valid">Пароль должен содержать более 6 символов</string>
+    <string name="main_career_text">Карьера</string>
+    <string name="main_user_name_text">Имя</string>
+    <string name="main_settings_button">Настройки</string>
+    <string name="main_address_text">Домашний адрес</string>
+    <string name="main_footnote_text">Перейти к настройкам и заполнить профиль</string>
+    <string name="main_edit_profile_button">Редактироовать профиль</string>
+    <string name="main_view_contacts_button">показать мои контакты</string>
+    <string name="auth_register_button">РЕГИСТРАЦИЯ</string>
+    <string name="auth_agreement_with_terms_text">Нажимая кнопку регистрации Вы соглашаетесь с правилами</string>
+    <string name="auth_footer_text">Есть аккаунт?</string>
+    <string name="auth_sign_in_button">Войти</string>
+    <string name="auth_or_text">или</string>
+    <string name="auth_google_button">GOOGLE</string>
+    <string name="auth_remember_me_check_box">Запомнить меня</string>
+    <string name="auth_password_hint">Пароль</string>
+    <string name="auth_title_text">Давайте знакомиться</string>
+    <string name="auth_subtitle_text">Заполните данные и войдите в приложение!</string>
+    <string name="auth_e_mail_hint">E-mail</string>
+    <string name="auth_e_mail_error_text">Email не коректный</string>
+    <string name="auth_password_error_text">Пароль не может содержать менее 6 символов</string>
+    <string name="my_contacts_contacts_text">Контакты</string>
+    <string name="my_contacts_add_button">Добавить контакт</string>
 </resources>

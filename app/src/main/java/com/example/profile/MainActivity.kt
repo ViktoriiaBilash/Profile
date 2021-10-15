@@ -21,6 +21,26 @@ class MainActivity : AppCompatActivity() {
         setting = getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE)
         val user = intent.getStringExtra(Constants.USER_NAME)
         binding.tvName.text = user
+
+        setListeners()
+    }
+
+    private fun setListeners() {
+        binding.btnViewContacts.setOnClickListener{
+            goToMyContacts()
+        }
+    }
+
+//    private fun goToMyContacts(java: Class<MyContactsActivity>) {
+//val intent = Intent(this, java)
+//        startActivity(intent)
+//        finish()
+//    }
+
+    private fun goToMyContacts() {
+        val intent = Intent(this, MyContactsActivity::class.java)
+        startActivity(intent)
+//        finish()
     }
 
     override fun onBackPressed() {

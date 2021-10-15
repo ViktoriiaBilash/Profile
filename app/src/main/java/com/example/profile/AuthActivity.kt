@@ -13,7 +13,7 @@ import com.example.profile.utils.Constants
 
 class AuthActivity : AppCompatActivity() {
 
-    private lateinit var setting: SharedPreferences
+    private lateinit var sharedPreferences: SharedPreferences
     private lateinit var userEmail: String
     private lateinit var userPassword: String
     private lateinit var binding: ActivityAuthBinding
@@ -22,45 +22,45 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setting = getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE)
 
         setListeners()
-        checkAutologin()
+        isAutologin()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         val email = binding.editTextEmail.text.toString()
         val password = binding.editTextPassword.text.toString()
-        val checkBox = binding.checkBoxRememberMe.isChecked
+        val checkBox = binding.checkBoxRememberMe
 
         with(outState) {
             putString(Constants.USER_EMAIL, email)
             putString(Constants.USER_PASSWORD, password)
-            putBoolean(Constants.CHECK_BOX, checkBox)
+            putBoolean(Constants.REMEMBER_ME, checkBox.isChecked)
         }
         super.onSaveInstanceState(outState)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        val email = savedInstanceState.get(Constants.USER_EMAIL)
-        val password = savedInstanceState.get(Constants.USER_PASSWORD)
-        val checkBox = savedInstanceState.get(Constants.CHECK_BOX)
+        val email = savedInstanceState.getString(Constants.USER_EMAIL)
+        val password = savedInstanceState.getString(Constants.USER_PASSWORD)
+        val checkBox = savedInstanceState.getBoolean(Constants.REMEMBER_ME)
 
         with(binding) {
-            editTextEmail.setText(email.toString())
-            editTextPassword.setText(password.toString())
-            checkBoxRememberMe.isChecked = checkBox as Boolean
+            editTextEmail.setText(email)
+            editTextPassword.setText(password)
+            checkBoxRememberMe.isChecked = checkBox
         }
     }
 
     private fun setListeners() {
         with(binding) {
             editTextEmail.doOnTextChanged { _, _, _, _ ->
-                inputTextEmail.error = null
+                inputTextEmail.error = ""
             }
             editTextPassword.doOnTextChanged { _, _, _, _ ->
-                inputTextPassword.error = null
+                inputTextPassword.error = ""
             }
             btnRegister.setOnClickListener {
                 goToMyProfile()
@@ -68,15 +68,11 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkAutologin() {
-        if (isAutoLogin()) {
-            userEmail = setting.getString(Constants.USER_EMAIL, "").toString()
-            startActivityAuth()
+    private fun isAutologin() {
+        if (sharedPreferences.contains(Constants.USER_EMAIL)) {
+            userEmail = sharedPreferences.getString(Constants.USER_EMAIL, "").toString()
+            startActivityMain()
         }
-    }
-
-    private fun isAutoLogin(): Boolean {
-        return setting.contains(Constants.USER_EMAIL)
     }
 
     private fun goToMyProfile() {
@@ -85,33 +81,33 @@ class AuthActivity : AppCompatActivity() {
 
         if (isValidEmail(userEmail) && isValidPassword(userPassword)) {
             rememberUser()
-            startActivityAuth()
+            startActivityMain()
             finish()
         } else {
             showErrors()
         }
     }
 
-    private fun startActivityAuth() {
-        val registerIntent = Intent(this, MainActivity::class.java)
-        with(registerIntent) {
+    private fun startActivityMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        with(intent) {
             putExtra(Constants.USER_EMAIL, userEmail)
             putExtra(Constants.USER_NAME, parseEmail(userEmail))
         }
-        startActivity(registerIntent)
+        startActivity(intent)
     }
 
     private fun rememberUser() {
         val checkBox = binding.checkBoxRememberMe
         if (checkBox.isChecked) {
-            val editor = setting.edit()
+            val editor = sharedPreferences.edit()
             editor.putString(Constants.USER_EMAIL, userEmail).apply()
         }
     }
 
     private fun showErrors() {
-        val emailError = getString(R.string.email_is_not_valid)
-        val passwordError = getString(R.string.password_is_not_valid)
+        val emailError = getString(R.string.auth_e_mail_error_text)
+        val passwordError = getString(R.string.auth_password_error_text)
         if (!isValidEmail(userEmail)) {
             binding.inputTextEmail.error = emailError
         }
