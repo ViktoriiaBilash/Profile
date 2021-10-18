@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.profile.databinding.ActivityMainBinding
 import com.example.profile.utils.Constants
+import com.example.profile.utils.extensions.clear
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,27 +27,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        binding.btnViewContacts.setOnClickListener{
+        binding.btnViewContacts.setOnClickListener {
             goToMyContacts()
         }
     }
 
-//    private fun goToMyContacts(java: Class<MyContactsActivity>) {
-//val intent = Intent(this, java)
-//        startActivity(intent)
-//        finish()
-//    }
-
     private fun goToMyContacts() {
         val intent = Intent(this, MyContactsActivity::class.java)
         startActivity(intent)
-//        finish()
+        finish()
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        val editor = setting.edit()
-        editor.clear().apply()
+        setting.clear()
 
         val authIntent = Intent(this, AuthActivity::class.java)
         startActivity(authIntent)
