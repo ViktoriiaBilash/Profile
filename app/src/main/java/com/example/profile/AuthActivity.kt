@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import com.example.profile.databinding.ActivityAuthBinding
 import com.example.profile.utils.Constants
-import com.example.profile.utils.extensions.getString
+
 import com.example.profile.utils.extensions.saveString
 
 class AuthActivity : AppCompatActivity() {
@@ -72,7 +72,7 @@ class AuthActivity : AppCompatActivity() {
 
     private fun isAutologin() {
         if (sharedPreferences.contains(Constants.USER_EMAIL)) {
-            userEmail = sharedPreferences.getString(Constants.USER_EMAIL)
+            userEmail = sharedPreferences.getString(Constants.USER_EMAIL, "").toString()
             startActivityMain()
         }
     }

@@ -6,7 +6,6 @@
 
     <View
         android:id="@+id/view_top_background"
-        style="@style/ViewBackgroundDark"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/view_bottom_background"
@@ -28,7 +27,6 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_setting"
-        style="@style/TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_all_large"
@@ -52,7 +50,6 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_name"
-        style="@style/TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_all_normal"
@@ -64,24 +61,22 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_career"
-        style="@style/TextView.ColorGray"
+        style="@style/TextViewColorGray"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_all_large"
         android:text="@string/main_career_text"
-        android:textSize="@dimen/size_footnote_text"
         app:layout_constraintEnd_toEndOf="@+id/tv_name"
         app:layout_constraintStart_toStartOf="@+id/tv_name"
         app:layout_constraintTop_toBottomOf="@id/tv_name" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_home_address"
-        style="@style/TextView.ColorGray"
+        style="@style/TextViewColorGray"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_all_large"
         android:text="@string/main_address_text"
-        android:textSize="@dimen/size_footnote_text"
         app:layout_constraintEnd_toEndOf="@id/tv_career"
         app:layout_constraintStart_toStartOf="@id/tv_career"
         app:layout_constraintTop_toBottomOf="@id/tv_career" />
@@ -98,7 +93,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_instagram"
-            style="@style/Button.ButtonFullWhite"
+            style="@style/Button.Full"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -106,7 +101,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_facebook"
-            style="@style/Button.ButtonFullWhite"
+            style="@style/Button.Full"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -114,7 +109,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_vk"
-            style="@style/Button.ButtonFullWhite"
+            style="@style/Button.Full"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -124,12 +119,11 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_go_to_setting"
-        style="@style/TextView.ColorNavy"
+       style="@style/TextViewColorBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/main_footnote_text"
-        android:textSize="@dimen/size_footnote_text"
         app:layout_constraintBottom_toTopOf="@+id/btn_edit_profile"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -142,8 +136,7 @@
         android:layout_marginEnd="@dimen/margin_all_large"
         android:text="@string/main_edit_profile_button"
         android:textAllCaps="false"
-        style="@style/Button.ButtonNavyStroke"
-        app:backgroundTint="@android:color/transparent"
+        android:theme="@style/Button.Full.StrokeColor"
         app:layout_constraintBottom_toTopOf="@+id/btn_view_contacts"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -155,7 +148,7 @@
         android:layout_margin="@dimen/margin_all_large"
         android:layout_marginBottom="@dimen/margin_all_large"
         android:text="@string/main_view_contacts_button"
-        android:theme="@style/Button.ButtonFullOrange"
+        android:theme="@style/ButtonColorSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

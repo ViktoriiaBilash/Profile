@@ -3,25 +3,40 @@
     <style name="Theme.Profile" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryVariant">@color/gray</item>
-        <item name="colorOnPrimary">@color/gray_light</item>
-        <item name="android:textColorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/navy_300</item>
+        <item name="colorOnPrimary">@color/white</item>
 
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/orange</item>
+        <item name="colorSecondary">@color/orange_500</item>
+        <item name="colorSecondaryVariant">@color/gray_300</item>
+
+        <!--Surface colors -->
+        <item name="colorSurface">@color/navy_500</item>
+
+        <!--The background color appears behind scrollable content-->
+        <item name="android:colorBackground">?attr/colorSurface</item>
+        <item name="colorOnBackground">@color/white</item>
+        <item name="colorOnSurface">?attr/colorOnBackground</item>
+
+        <!--Text appearance -->
+        <item name="errorTextColor">@color/red_500</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="fontFamily">@font/open_sans_semibold</item>
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textColorPrimary">?attr/colorOnPrimary</item>
+
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <item name="android:windowAnimationStyle">@style/WindowAnimations</item>
-    </style>
-
-    <style name="ViewBackgroundDark">
-        <item name="android:background">@color/navy</item>
+        <item name="android:navigationBarColor">@color/navy_700</item>
     </style>
 
     <style name="ViewBackgroundLight">
-        <item name="android:background">@color/white</item>
+        <item name="android:background">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="android:textColor">?attr/colorSecondaryVariant</item>
+        <item name="android:buttonTint">?attr/colorOnPrimary</item>
     </style>
 
     <style name="Widget.MaterialComponents.TextInputLayout.FilledBox" parent="Base.Widget.MaterialComponents.TextInputLayout">
@@ -29,17 +44,9 @@
             @style/ThemeOverlay.MaterialComponents.TextInputEditText.FilledBox
         </item>
         <item name="boxBackgroundMode">filled</item>
-        <item name="boxBackgroundColor">@color/navy</item>
-        <item name="endIconTint">@color/mtrl_filled_icon_tint</item>
-        <item name="startIconTint">@color/mtrl_filled_icon_tint</item>
         <item name="boxCollapsedPaddingTop">10dp</item>
-        <item name="boxStrokeColor">@color/gray_light</item>
-        <item name="android:textColorHint">@color/white</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="hintTextColor">@color/white</item>
-        <item name="shapeAppearanceOverlay">
-            @style/ShapeAppearanceOverlay.MaterialComponents.TextInputLayout.FilledBox
-        </item>
+        <item name="hintTextColor">?attr/colorOnPrimary</item>
+        <item name="boxStrokeColor">?attr/colorSecondaryVariant</item>
     </style>
 
     <style name="WindowAnimations">
@@ -49,52 +56,42 @@
         <item name="android:activityCloseExitAnimation">@anim/exit_activity</item>
     </style>
 
-    <style name="TextView">
-        <item name="fontFamily">@font/open_sans_semibold</item>
-        <item name="android:textColor">@color/white</item>
+    <style name="TextViewColorGray">
+        <item name="android:textColor">?attr/colorSecondaryVariant</item>
     </style>
 
-    <style name="TextView.ColorGray">
-        <item name="android:textColor">@color/gray</item>
+    <style name="TextViewColorBackground">
+        <item name="android:textColor">?attr/colorSurface</item>
     </style>
 
-    <style name="TextView.ColorNavy">
-        <item name="android:textColor">@color/navy</item>
-    </style>
-
-    <style name="Button">
-        <item name="fontFamily">@font/open_sans_semibold</item>
-        <item name="android:backgroundTint">@color/navy</item>
-    </style>
-
-    <style name="Button.ButtonFullWhite" parent="Widget.MaterialComponents.Button.TextButton.Icon">
-        <item name="colorPrimary">@color/white</item>
-        <item name="backgroundTint">@android:color/transparent</item>
+    <style name="Button.Full" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="colorPrimary">?attr/colorOnBackground</item>
+        <item name="colorOnPrimary">?attr/colorSurface</item>
         <item name="iconGravity">textStart</item>
-        <item name="iconTint">@android:color/transparent</item>
         <item name="iconTintMode">add</item>
-        <item name="colorOnPrimary">@color/navy</item>
+        <item name="iconTint">@android:color/transparent</item>
     </style>
 
-    <style name="Button.ButtonFullOrange">
-        <item name="android:backgroundTint">@color/orange</item>
-        <item name="colorOnPrimary">@color/white</item>
-
+    <style name="Button.Full.ColorBackground">
+        <item name="colorPrimary">?attr/colorSurface</item>
+        <item name="colorOnPrimary">?attr/colorOnBackground</item>
     </style>
 
-    <style name="Button.ButtonOrangeStroke" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="colorPrimary">@color/navy</item>
+    <style name="ButtonColorSecondary">
+        <item name="colorPrimary">?attr/colorSecondary</item>
+    </style>
+
+    <style name="Button.Full.StrokeColor">
         <item name="cornerRadius">5dp</item>
-        <item name="strokeColor">@color/orange</item>
+        <item name="strokeColor">?attr/colorSurface</item>
         <item name="strokeWidth">2dp</item>
     </style>
 
-    <style name="Button.ButtonNavyStroke" parent="Widget.MaterialComponents.Button.TextButton.Icon">
-        <item name="android:textColor">@color/navy</item>
-        <item name="cornerRadius">5dp</item>
-        <item name="strokeColor">@color/navy</item>
+    <style name="ButtonStrokeColorSecondary">
+        <item name="strokeColor">?attr/colorSecondary</item>
         <item name="strokeWidth">2dp</item>
+        <item name="cornerRadius">5dp</item>
+        <item name="android:backgroundTint">@android:color/transparent</item>
     </style>
 
 </resources>
