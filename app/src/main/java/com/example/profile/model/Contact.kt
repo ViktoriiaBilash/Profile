@@ -4,5 +4,7 @@ data class Contact(
     val name : String,
     val career : String,
     val homeAddress : String,
-    val icon : String
-)
+    val num : Int
+){
+    val icon : String = "https://i.pravatar.cc/50?img=$num"
+}

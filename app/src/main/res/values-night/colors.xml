@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <color name="white">#E9FFFFFF</color>
-    <color name="gray_500">#BFB2B2B3</color>
     <color name="red_500">#DDC50505</color>
+    <color name="gray_500">#706D6D</color>
     <color name="gray_300">#D5BDBDBD</color>
-    <color name="navy_300">#9F312E49</color>
+    <color name="navy_300">#2E2B43</color>
     <color name="navy_500">#242235</color>
     <color name="navy_700">#1A1927</color>
     <color name="orange_500">#D3FB5E06</color>

@@ -8,7 +8,7 @@
 
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/orange_500</item>
-        <item name="colorSecondaryVariant">@color/gray_300</item>
+        <item name="colorSecondaryVariant">@color/gray_500</item>
 
         <!--Surface colors -->
         <item name="colorSurface">@color/navy_500</item>
