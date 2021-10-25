@@ -1,15 +1,22 @@
 package com.example.profile
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.profile.databinding.ItemBinding
 import com.example.profile.model.Contact
+import com.example.profile.utils.extensions.loadImageWithGlide
 
 //adapter contains list of contacts (users)
-class ContactsAdapter(private val contacts: List<Contact>) :
-    RecyclerView.Adapter<ContactsAdapter.ContactsViewHolder>() {
+class MyContactsAdapter(private val contacts: List<Contact>) :
+    RecyclerView.Adapter<MyContactsAdapter.ContactsViewHolder>() {
+
+    init {
+        Log.e("AAAA", "Recycler created")
+    }
 
     //how many elements in the list
     override fun getItemCount(): Int {
@@ -32,11 +39,10 @@ class ContactsAdapter(private val contacts: List<Contact>) :
         val contact = contacts[position]
         holder.binding.tvName.text = contact.name
         holder.binding.tvCareer.text = contact.career
-        Glide.with(holder.itemView.context)
-            .load(contact.icon)
-            .circleCrop()
-            .into(holder.binding.imgAvatar)
+        holder.binding.imgAvatar
 
+        val icon : ImageView = holder.binding.imgAvatar
+        icon.loadImageWithGlide(contact.icon)
     }
 
     //contains date

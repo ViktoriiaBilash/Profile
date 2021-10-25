@@ -33,15 +33,15 @@ class ContactsService {
         return contacts
     }
 
-    fun deleteUser(contact: Contact) {
-        contacts.remove(contact)
-    }
+//    fun deleteUser(contact: Contact) {
+//        contacts.remove(contact)
+//    }
 
-    fun moveContact(contact: Contact, position: Int) {
-        val index = contacts.indexOf(contact)
-        if (index == -1) return
-        val newIndex = index + position
-        if (newIndex < 0 || newIndex >= contacts.size) return
-        Collections.swap(contacts, index, newIndex)
-    }
+//    fun moveContact(contact: Contact, position: Int) {
+//        val index = contacts.indexOf(contact)
+//        if (index == -1) return
+//        val newIndex = index + position
+//        if (newIndex < 0 || newIndex >= contacts.size) return
+//        Collections.swap(contacts, index, newIndex)
+//    }
 }
