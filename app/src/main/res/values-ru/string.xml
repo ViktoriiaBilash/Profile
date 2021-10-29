@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Профиль</string>
-    <string name="main_career_text">Карьера</string>
+    <string name="all_career_text">Карьера</string>
     <string name="main_user_name_text">Имя</string>
     <string name="main_settings_button">Настройки</string>
     <string name="main_address_text">Домашний адрес</string>
@@ -22,4 +22,9 @@
     <string name="auth_password_error_text">Пароль не может содержать менее 6 символов</string>
     <string name="my_contacts_contacts_text">Контакты</string>
     <string name="my_contacts_add_button">Добавить контакт</string>
+    <string name="add_contact_save_button">сохранить</string>
+    <string name="add_contact_name_hint">Имя пользователя</string>
+    <string name="add_contact_phone">Телефон</string>
+    <string name="add_contact_date_birthday">Дата рождения</string>
+
 </resources>

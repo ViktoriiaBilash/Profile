@@ -3,6 +3,7 @@
     <dimen name="margin_all_normal">8dp</dimen>
     <dimen name="margin_all_small">4dp</dimen>
     <dimen name="margin_all_large">16dp</dimen>
+    <dimen name="margin_all_the_largest">32dp</dimen>
     <dimen name="margin_main_image">64dp</dimen>
     <dimen name="size_heading_text">18sp</dimen>
     <dimen name="size_footnote_text">14sp</dimen>

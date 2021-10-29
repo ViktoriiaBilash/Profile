@@ -34,6 +34,10 @@
         <item name="android:background">?attr/colorOnPrimary</item>
     </style>
 
+    <style name="ViewBackgroundDark">
+        <item name="android:background">?attr/colorSurface</item>
+    </style>
+
     <style name="CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
         <item name="android:textColor">?attr/colorSecondaryVariant</item>
         <item name="android:buttonTint">?attr/colorOnPrimary</item>
@@ -47,6 +51,14 @@
         <item name="boxCollapsedPaddingTop">10dp</item>
         <item name="hintTextColor">?attr/colorOnPrimary</item>
         <item name="boxStrokeColor">?attr/colorSecondaryVariant</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.TextInputLayout.FilledBox.ColorOnPrimary">
+       <item name="android:background">?attr/colorOnPrimary</item>
+        <item name="android:textColorHint">?attr/colorSecondaryVariant</item>
+        <item name="hintTextColor">?attr/colorSecondaryVariant</item>
+        <item name="android:textColor">?attr/colorSurface</item>
+        <item name="android:textCursorDrawable">@null</item>
     </style>
 
     <style name="WindowAnimations">
@@ -70,6 +82,7 @@
         <item name="iconGravity">textStart</item>
         <item name="iconTintMode">add</item>
         <item name="iconTint">@android:color/transparent</item>
+
     </style>
 
     <style name="Button.Full.ColorBackground">
@@ -80,6 +93,7 @@
     <style name="ButtonColorSecondary">
         <item name="colorPrimary">?attr/colorSecondary</item>
     </style>
+
 
     <style name="Button.Full.StrokeColor">
         <item name="cornerRadius">5dp</item>

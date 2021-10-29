@@ -1,6 +1,7 @@
 package com.example.profile.model
 
 data class Contact(
+    val id : Int,
     val name : String,
     val career : String,
     val homeAddress : String,

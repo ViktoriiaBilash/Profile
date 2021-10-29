@@ -1,6 +1,6 @@
 package com.example.profile.model
 
-import java.util.*
+import android.util.Log
 
 class ContactsService {
 
@@ -20,28 +20,29 @@ class ContactsService {
     )
 
     init {
+        Log.e("AAAA", "ContactsService created")
         for (n in 0..20) {
             contacts.add(
-                Contact(
-                    names[n % names.size], "developer, exp $n years", "Beverly Hills, 9021$n", n
+                Contact(n,
+                    names[n % names.size],
+                    "developer, exp $n years", "Beverly Hills, 9021$n", n
                 )
             )
         }
     }
 
     fun getContacts(): List<Contact> {
+        Log.e("AAAA", "ContactsService get contacts")
         return contacts
     }
 
-//    fun deleteUser(contact: Contact) {
-//        contacts.remove(contact)
-//    }
+    fun deleteUser(contact: Contact) {
+        Log.e("AAAA", "delete user")
+        val index = contacts.indexOfFirst { it.id == contact.id }
+        if(index != -1){
+            contacts.remove(contact)
+            //contacts.removeAt(index)
+        }
+    }
 
-//    fun moveContact(contact: Contact, position: Int) {
-//        val index = contacts.indexOf(contact)
-//        if (index == -1) return
-//        val newIndex = index + position
-//        if (newIndex < 0 || newIndex >= contacts.size) return
-//        Collections.swap(contacts, index, newIndex)
-//    }
 }

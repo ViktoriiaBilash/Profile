@@ -44,18 +44,17 @@
         app:layout_constraintTop_toBottomOf="@id/tv_name"
         tools:text="Career" />
 
-    <ImageView
-        android:id="@+id/img_delete"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/Button.Full"
         android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/barrier_horizontal"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_delete_24"
-        tools:layout_editor_absoluteX="333dp"
-        tools:layout_editor_absoluteY="23dp"
+        app:icon="@drawable/ic_basket"
         tools:ignore="ContentDescription" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -63,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:barrierDirection="start"
-        app:constraint_referenced_ids="img_delete">
+        app:constraint_referenced_ids="button_delete">
 
     </androidx.constraintlayout.widget.Barrier>
 

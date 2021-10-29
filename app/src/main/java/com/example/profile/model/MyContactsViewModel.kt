@@ -24,14 +24,13 @@ class MyContactsViewModel(private val contactsService: ContactsService) : ViewMo
         super.onCleared()
     }
     private fun loadContacts() {
+        Log.e("AAAA", "VM loadContacts()")
         listInside.postValue(contactsService.getContacts())
     }
 //
-//    fun moveContact(contact: Contact, position: Int) {
-//        contactsService.moveContact(contact, position)
-//    }
-//
 //    fun deleteContact(contact: Contact) {
+//        Log.e("AAAA", "VM deleteContact")
 //        contactsService.deleteUser(contact)
+//        loadContacts()
 //    }
 }
