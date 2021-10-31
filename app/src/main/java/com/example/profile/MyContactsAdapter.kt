@@ -1,11 +1,15 @@
 package com.example.profile
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.profile.databinding.FragmentAddContactBinding
 import com.example.profile.databinding.ItemBinding
 import com.example.profile.model.Contact
 import com.example.profile.utils.extensions.loadImageWithGlide
@@ -13,9 +17,12 @@ import com.google.android.material.button.MaterialButton
 
 //adapter contains list of contacts (users)
 class MyContactsAdapter(
-    private val contacts: MutableList<Contact>,
+
+    private var contacts: MutableList<Contact>,
     private val listener: ItemClickListener) :
     RecyclerView.Adapter<MyContactsAdapter.ContactsViewHolder>() {
+
+    private var context: Context? = null
 
     init {
         Log.e("AAAA", "Adapter created")
@@ -45,10 +52,10 @@ class MyContactsAdapter(
         holder.binding.buttonDelete.setOnClickListener {
             val position = holder.absoluteAdapterPosition
             val model = contacts[position]
-
+context = parent.context
             listener.onDelete(model)
         }
-        //return ContactsViewHolder(binding)
+
         return holder
     }
 
@@ -68,37 +75,67 @@ class MyContactsAdapter(
 
     fun removeContact(model: Contact){
         Log.e("AAAA", "Adapter remove")
-        val position = contacts.indexOf(model)
+        val newList : List<Contact> = contacts
+        contacts = ArrayList(contacts)
         contacts.remove(model)
-        notifyItemRemoved(position)
+        updateList(newList, contacts)
+
+        Toast.makeText(context, context?.getString(R.string.contact_removed), Toast.LENGTH_SHORT).show()
     }
 
 
-    fun updateProduct(model: Contact?) {
+    fun addContact(model: Contact){
+        Log.e("AAAA", "Adapter addContact")
+        val newList : List<Contact> = contacts
+        contacts = ArrayList(contacts)
+        contacts.add(model)
+        updateList(newList, contacts)
+    }
+
+    private fun updateList(oldList : List<Contact>, newList : List<Contact>) {
+
         Log.e("AAAA", "Adapter update")
-        if (model == null) return // we cannot update the value because it is null
 
-        for (item in contacts) {
-            // search by id
-            if (item.id == model.id) {
-                val position = contacts.indexOf(model)
-                contacts[position] = model
-                notifyItemChanged(position)
-                break // we don't need to continue anymore
-            }
-        }
+        val diffCallback = ContactsDiffCallback(oldList, newList)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+        //contacts = newList as MutableList<Contact>
+        diffResult.dispatchUpdatesTo(this)
     }
 
+    class ContactsDiffCallback(
+        private val oldList : List<Contact>,
+        private val newList : List<Contact>
+    ) : DiffUtil.Callback(){
+
+        override fun getOldListSize(): Int {
+            Log.e("AAAA", "DiffCallback getOldListSize ")
+            return oldList.size
+        }
+
+        override fun getNewListSize(): Int {
+            Log.e("AAAA", "DiffCallback getnewListSize ")
+            return newList.size
+        }
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            Log.e("AAAA", "DiffCallbackareItemsTheSame")
+            val oldItem = oldList[oldItemPosition]
+            val newItem = newList[newItemPosition]
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            Log.e("AAAA", "DiffCallbackare areContentsTheSame")
+            val oldItem = oldList[oldItemPosition]
+            val newItem = newList[newItemPosition]
+            return oldItem == newItem
+        }
+
+    }
     //contains date
     class ContactsViewHolder(
        val binding: ItemBinding
     ) : RecyclerView.ViewHolder(binding.root), View.OnClickListener{
-        private val buttonDelete : MaterialButton = binding.buttonDelete
-
-        init {
-            Log.e("AAAA", "ViewHolder create")
-           // buttonDelete.setOnClickListener(this)
-        }
 
         override fun onClick(p0: View?) {
             Log.e("AAAA", "ViewHolder onClick")

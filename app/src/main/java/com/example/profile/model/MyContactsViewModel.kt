@@ -1,6 +1,5 @@
 package com.example.profile.model
 
-import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -27,10 +26,5 @@ class MyContactsViewModel(private val contactsService: ContactsService) : ViewMo
         Log.e("AAAA", "VM loadContacts()")
         listInside.postValue(contactsService.getContacts())
     }
-//
-//    fun deleteContact(contact: Contact) {
-//        Log.e("AAAA", "VM deleteContact")
-//        contactsService.deleteUser(contact)
-//        loadContacts()
-//    }
+
 }

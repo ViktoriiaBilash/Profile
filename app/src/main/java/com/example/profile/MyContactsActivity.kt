@@ -36,7 +36,8 @@ class MyContactsActivity : AppCompatActivity() {
         }
 
         override fun addContact(model: Contact) {
-            TODO("Not yet implemented")
+            Log.e("AAAA", "faddContact")
+            adapter.addContact(model)
         }
 
     }
@@ -82,8 +83,7 @@ class MyContactsActivity : AppCompatActivity() {
                     Log.e("AAAA", "Activity  setListeners find")
                     //will add
                 }
-                Log.e("AAAA", "Activity  empty")
-                //will add remove an item
+
             }
     }
 
@@ -93,10 +93,9 @@ class MyContactsActivity : AppCompatActivity() {
         startActivity(mainIntent)
     }
     private fun goToAddingContact() {
-        var dialog = AddContactFragment()
+        Log.e("AAAA", "Activity goToAddingContact()")
+        var dialog = AddContactFragment(listener)
         dialog.show(supportFragmentManager, AddContactFragment.TAG)
+//
     }
-
-
-
 }
