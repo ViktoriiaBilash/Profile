@@ -53,9 +53,10 @@
         <item name="android:background">?attr/colorPrimaryVariant</item>
         <item name="android:textColorHint">?attr/colorSecondaryVariant</item>
         <item name="hintTextColor">?attr/colorSecondaryVariant</item>
-
         <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:textCursorDrawable">@null</item>
+        <item name="android:layout_marginStart">@dimen/margin_all_large</item>
+        <item name="android:layout_marginEnd">@dimen/margin_all_large</item>
     </style>
 
     <style name="WindowAnimations">

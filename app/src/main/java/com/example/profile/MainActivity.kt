@@ -41,8 +41,5 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         setting.clear()
-
-        val authIntent = Intent(this, AuthActivity::class.java)
-        startActivity(authIntent)
     }
 }

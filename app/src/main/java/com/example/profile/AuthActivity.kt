@@ -59,10 +59,14 @@ class AuthActivity : AppCompatActivity() {
     private fun setListeners() {
         with(binding) {
             editTextEmail.doOnTextChanged { _, _, _, _ ->
-                inputTextEmail.error = ""
+                if(isValidEmail(binding.editTextEmail.text.toString())){
+                    inputTextEmail.error = ""
+                }
             }
             editTextPassword.doOnTextChanged { _, _, _, _ ->
-                inputTextPassword.error = ""
+                if (isValidPassword(binding.editTextPassword.text.toString())){
+                    inputTextPassword.error = ""
+                }
             }
             btnRegister.setOnClickListener {
                 goToMyProfile()

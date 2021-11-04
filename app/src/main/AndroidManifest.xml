@@ -15,25 +15,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Profile">
         <activity
-            android:name=".AddContactFragment"
+            android:name=".AddContactDialog"
             android:exported="true"
+            android:label="Add contact"
+            android:parentActivityName=".MyContactsActivity"
             tools:ignore="Instantiatable" />
         <activity
             android:name=".MyContactsActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="Contacts"
+            android:parentActivityName=".MainActivity">
             <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
 
-        <category android:name="android.intent.category.LAUNCHER" />
-    </intent-filter>
-    </activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".AuthActivity"
-            android:exported="true"/>
-
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".AuthActivity" />
     </application>
 
 </manifest>

@@ -1,30 +1,30 @@
 package com.example.profile.model
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class MyContactsViewModel(private val contactsService: ContactsService) : ViewModel() {
 
-    //could be change by ViewModel
-    private val listInside = MutableLiveData<List<Contact>>()
-
-    //for access view
+    private var listInside = MutableLiveData<List<Contact>>()
     val listOutside: LiveData<List<Contact>> = listInside
 
     init {
-        Log.e("AAAA", "VM created")
         loadContacts()
     }
 
-    override fun onCleared() {
-        Log.e("AAAA", "VM cleared")
-        super.onCleared()
-    }
     private fun loadContacts() {
-        Log.e("AAAA", "VM loadContacts()")
         listInside.postValue(contactsService.getContacts())
     }
 
+    fun removeContact(model: Contact) {
+        contactsService.removeContact(model)
+        listInside.postValue(contactsService.getContacts())
+    }
+
+    fun addContact(model: Contact) {
+        model.id = contactsService.getContacts().size
+        contactsService.addContact(model)
+        listInside.postValue(contactsService.getContacts())
+    }
 }

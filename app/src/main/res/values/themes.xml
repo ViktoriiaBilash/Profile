@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Profile" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">?attr/colorOnPrimary</item>
         <item name="colorPrimaryVariant">@color/navy_300</item>
         <item name="colorOnPrimary">@color/white</item>
 
@@ -54,11 +54,13 @@
     </style>
 
     <style name="Widget.MaterialComponents.TextInputLayout.FilledBox.ColorOnPrimary">
-       <item name="android:background">?attr/colorOnPrimary</item>
+        <item name="android:background">?attr/colorOnPrimary</item>
         <item name="android:textColorHint">?attr/colorSecondaryVariant</item>
         <item name="hintTextColor">?attr/colorSecondaryVariant</item>
         <item name="android:textColor">?attr/colorSurface</item>
         <item name="android:textCursorDrawable">@null</item>
+        <item name="android:layout_marginStart">@dimen/margin_all_large</item>
+        <item name="android:layout_marginEnd">@dimen/margin_all_large</item>
     </style>
 
     <style name="WindowAnimations">

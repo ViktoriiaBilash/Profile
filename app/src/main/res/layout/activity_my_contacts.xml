@@ -31,51 +31,51 @@
         android:id="@+id/linearLayout_my_contacts_header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"       >
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_back"
+            style="@style/Button.Full.ColorBackground"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_back"
-            app:icon="@drawable/ic_baseline_arrow_back"
-            app:iconGravity="start"
             android:layout_weight="1"
-            style="@style/Button.Full.ColorBackground"/>
+            app:icon="@drawable/ic_baseline_arrow_back"
+            app:iconGravity="start" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/my_contacts_contacts_text"
-            android:textSize="@dimen/size_title_text"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:layout_gravity="center" />
+            android:text="@string/my_contacts_contacts_text"
+            android:textSize="@dimen/size_title_text" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_find"
+            style="@style/Button.Full.ColorBackground"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_find"
-            app:icon="@drawable/ic_find"
-            app:iconGravity="end"
             android:layout_weight="1"
-            style="@style/Button.Full.ColorBackground"/>
+            app:icon="@drawable/ic_find"
+            app:iconGravity="end" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_add_contact"
+        style="@style/Button.Full.ColorBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout_my_contacts_header"
-        app:layout_constraintBottom_toBottomOf="@id/view_top_background"
         android:layout_marginStart="@dimen/margin_all_large"
+        android:gravity="center_horizontal"
         android:text="@string/my_contacts_add_button"
         android:textAllCaps="false"
-        android:gravity="center_horizontal"
-        style="@style/Button.Full.ColorBackground"/>
+        app:layout_constraintBottom_toBottomOf="@id/view_top_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout_my_contacts_header" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_my_contacts_item"

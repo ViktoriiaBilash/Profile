@@ -61,9 +61,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/auth_e_mail_hint"
+                android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
-                android:singleLine="true"
-                android:imeOptions="actionNext"/>
+                android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -81,9 +81,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/auth_password_hint"
+                android:imeOptions="actionDone"
                 android:inputType="textPassword"
-                android:singleLine="true"
-                android:imeOptions="actionDone"/>
+                android:singleLine="true" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
