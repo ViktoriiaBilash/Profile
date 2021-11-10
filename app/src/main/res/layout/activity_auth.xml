@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AuthActivity">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/layout_header_title"
@@ -40,7 +39,7 @@
         android:layout_marginStart="@dimen/margin_all_large"
         android:layout_marginEnd="@dimen/margin_all_large"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/btn_google"
+        app:layout_constraintBottom_toTopOf="@+id/button_google_auth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_header_title">
@@ -93,21 +92,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/auth_remember_me_check_box" />
-
     </LinearLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_google"
+    <com.example.profile.ui.customviews.colorbutton.ButtonColorLettersView
+        android:id="@+id/button_google_auth"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_all_large"
-        android:layout_marginEnd="@dimen/margin_all_large"
-        android:text="@string/auth_google_button"
-        android:theme="@style/Button.Full"
-        app:icon="@drawable/google_icon"
-        app:iconGravity="textStart"
-        app:iconTint="@android:color/transparent"
-        app:iconTintMode="add"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin_all_large"
+        app:customImage="@drawable/google_icon"
         app:layout_constraintBottom_toTopOf="@+id/tv_or"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

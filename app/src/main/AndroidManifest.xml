@@ -15,16 +15,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Profile">
         <activity
-            android:name=".AddContactDialog"
+            android:name=".ui.contacts.AddContactDialog"
             android:exported="true"
             android:label="Add contact"
-            android:parentActivityName=".MyContactsActivity"
+            android:parentActivityName=".ui.contacts.MyContactsActivity"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".MyContactsActivity"
+            android:name=".ui.contacts.MyContactsActivity"
             android:exported="true"
             android:label="Contacts"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".ui.MainActivity"/>
+
+        <activity
+            android:name=".ui.AuthActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,12 +36,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AuthActivity"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
-            android:parentActivityName=".AuthActivity" />
+            android:parentActivityName=".ui.AuthActivity" />
     </application>
 
 </manifest>

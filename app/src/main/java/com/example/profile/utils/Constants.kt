@@ -1,5 +1,7 @@
 package com.example.profile.utils
 
+import android.graphics.Color
+
 object Constants {
     const val APP_PREF = "APP_PREFERENCES"
     const val USER_EMAIL = "USER_EMAIL"
@@ -8,4 +10,6 @@ object Constants {
     const val REMEMBER_ME = "REMEMBER_ME"
     const val MIN_LENGTH_PASSWORD = 6
     const val MAX_LENGTH_PASSWORD = 60
+    const val DEFAULT_COLOR_CUSTOM_BUTTON_BACKGROUND = Color.RED
+    const val DEFAULT_COLOR_CUSTOM_BUTTON_CONTAINER = Color.GREEN
 }

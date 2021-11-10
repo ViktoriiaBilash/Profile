@@ -28,7 +28,18 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="android:navigationBarColor">@color/navy_700</item>
+        
+        <item name="buttonColorLettersStyle">@style/DefaultButtonColorLettersStyle</item>
+        
     </style>
+
+    
+    <style name="DefaultButtonColorLettersStyle" >
+        <item name="customColorBackground">?attr/colorOnPrimary</item>
+        <item name="customColorContainer">?attr/colorSecondary</item>
+
+    </style>
+
 
     <style name="ViewBackgroundLight">
         <item name="android:background">?attr/colorOnPrimary</item>
@@ -100,12 +111,12 @@
     <style name="Button.Full.StrokeColor">
         <item name="cornerRadius">5dp</item>
         <item name="strokeColor">?attr/colorSurface</item>
-        <item name="strokeWidth">2dp</item>
+        <item name="customStrokeWidth">2dp</item>
     </style>
 
     <style name="ButtonStrokeColorSecondary">
         <item name="strokeColor">?attr/colorSecondary</item>
-        <item name="strokeWidth">2dp</item>
+        <item name="customStrokeWidth">2dp</item>
         <item name="cornerRadius">5dp</item>
         <item name="android:backgroundTint">@android:color/transparent</item>
     </style>
