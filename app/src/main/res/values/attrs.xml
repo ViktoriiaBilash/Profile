@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ButtonColorLettersView">
+        <attr name="customColorBackground" format="color"/>
+        <attr name="customColorContainer" format="color"/>
+        <attr name="customImage" format="reference"/>
+        <attr name="customText" format="string"/>
+        <attr name="customTextSize" format="dimension"/>
+        <attr name="customStrokeWidth" format="string"/>
+    </declare-styleable>
+    
+    <attr name="buttonColorLettersStyle" format="reference">
+
+    </attr>
+</resources>
