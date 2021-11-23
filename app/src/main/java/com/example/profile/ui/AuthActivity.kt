@@ -22,13 +22,13 @@ class AuthActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAuthBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-           super.onCreate(savedInstanceState)
-           binding = ActivityAuthBinding.inflate(layoutInflater)
-           setContentView(binding.root)
-           sharedPreferences = getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE)
+        super.onCreate(savedInstanceState)
+        binding = ActivityAuthBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        sharedPreferences = getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE)
 
-           setListeners()
-           isAutologin()
+        setListeners()
+        isAutologin()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -60,17 +60,19 @@ class AuthActivity : AppCompatActivity() {
     private fun setListeners() {
         with(binding) {
             editTextEmail.doOnTextChanged { _, _, _, _ ->
-                if(isValidEmail(binding.editTextEmail.text.toString())){
+                if (isValidEmail(binding.editTextEmail.text.toString())) {
                     inputTextEmail.error = ""
                 }
             }
             editTextPassword.doOnTextChanged { _, _, _, _ ->
-                if (isValidPassword(binding.editTextPassword.text.toString())){
+                if (isValidPassword(binding.editTextPassword.text.toString())) {
                     inputTextPassword.error = ""
                 }
             }
             btnRegister.setOnClickListener {
                 goToMyProfile()
+            }
+            buttonGoogleAuth.setOnClickListener {
             }
         }
     }

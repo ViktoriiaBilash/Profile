@@ -3,15 +3,11 @@ package com.example.profile.ui.customviews.colorbutton
 import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.Drawable
-import android.os.Parcelable
 import android.util.AttributeSet
-import android.util.Log
-import android.util.TypedValue
 import android.view.View
 import androidx.core.graphics.toRectF
 import com.example.profile.R
 import com.example.profile.utils.Constants
-import kotlin.math.max
 import kotlin.properties.Delegates
 
 class ButtonColorLettersView(
@@ -41,18 +37,19 @@ class ButtonColorLettersView(
     private var colorContainer by Delegates.notNull<Int>()
     private var strokeWidthContainer by Delegates.notNull<Float>()
     private var image: Drawable? = null
-    private val paintBackground: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val paintStroke: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val paintText: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val space = 30f
     private var buttonBackground = Rect(0, 0, 0, 0)
     private var startImgX: Float = 0f
     private var startImgY: Float = 0f
     private var startTextX: Float = 0f
     private var startTextY: Float = 0f
+    private val paintBackground: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val paintStroke: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val paintText: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val spaceBetweenTextImg = 30f
+    private var textWidth: Float = 0f
+    private var textHeight = 0f
 
     init {
-        Log.e("AAAA", "init")
         if (attributesSet != null) {
             initializationAttr(attributesSet, defaultStyleAttr, defaultStyleRes)
         } else {
@@ -64,49 +61,35 @@ class ButtonColorLettersView(
             textAlign = Paint.Align.CENTER
             textSize = button.lettersList[0].size
         }
+
+        val bound = Rect()
+        paintText.getTextBounds(button.getText(), 0, button.getText().length, bound)
+        textWidth = paintText.measureText(button.getText())
+        textHeight = bound.height().toFloat()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        Log.e("AAAA", "onMeasure")
-        val minWidth = suggestedMinimumWidth + paddingLeft + paddingRight
-        val minHeight = suggestedMinimumHeight + paddingTop + paddingBottom
-
-        val desiredHeightInPx =
-            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 36F, resources.displayMetrics)
-                .toInt()
-        val desiredWidthInPx =
-            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 700F, resources.displayMetrics)
-                .toInt()
-
-        val desiredWidth = max(minWidth, desiredWidthInPx + paddingLeft + paddingRight)
-        val desiredHeight = max(minHeight, desiredHeightInPx + paddingTop + paddingBottom)
-
+        val desiredWidth = textWidth * Constants.RATE_OF_FREE_SPACE + paddingLeft + paddingRight
+        val desiredHeight = textHeight * Constants.RATE_OF_FREE_SPACE + paddingTop + paddingBottom
         setMeasuredDimension(
-            resolveSize(desiredWidth, widthMeasureSpec),
-            resolveSize(desiredHeight, heightMeasureSpec)
+            resolveSize(desiredWidth.toInt(), widthMeasureSpec),
+            resolveSize(desiredHeight.toInt(), heightMeasureSpec)
         )
-    }
-
-    override fun onSaveInstanceState(): Parcelable? {
-        return super.onSaveInstanceState()
-        Log.e("AAAA", "onSaveInstanceState()")
-    }
-
-    override fun onRestoreInstanceState(state: Parcelable?) {
-        super.onRestoreInstanceState(state)
-        Log.e("AAAA", "onRestoreInstanceState")
     }
 
     override fun onDraw(canvas: Canvas?) {
         setPosition()
-        Log.e("AAAA", "onDraw")
         super.onDraw(canvas)
+
         paintBackground.apply {
             color = colorBackground
             isAntiAlias = true
         }
         buttonBackground.set(0, 0, width, height)
-        canvas?.drawRoundRect(buttonBackground.toRectF(), 10f, 10f, paintBackground)
+        canvas?.drawRoundRect(
+            buttonBackground.toRectF(),
+            Constants.DEFAULT_CORNER_RADIUS, Constants.DEFAULT_CORNER_RADIUS, paintBackground
+        )
 
         if (colorContainer != 0) {
             paintStroke.apply {
@@ -114,12 +97,15 @@ class ButtonColorLettersView(
                 style = Paint.Style.STROKE
                 strokeWidth = strokeWidthContainer
             }
-            canvas?.drawRoundRect(buttonBackground.toRectF(), 10f, 10f, paintStroke)
+            canvas?.drawRoundRect(
+                buttonBackground.toRectF(),
+                Constants.DEFAULT_CORNER_RADIUS, Constants.DEFAULT_CORNER_RADIUS, paintStroke
+            )
         }
 
         if (image != null) {
             image?.setBounds(
-                startImgX.toInt(), startImgY.toInt(), 10, 10
+                startImgX.toInt(), startImgY.toInt(), 0, 0
             )
             if (canvas != null) {
                 image?.draw(canvas)
@@ -134,11 +120,9 @@ class ButtonColorLettersView(
             canvas?.drawText(letter.char, startTextX, startTextY, paintText)
             startTextX += paintText.measureText(letter.char)
         }
-
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-        Log.e("AAAA", "onsizeChanged")
         super.onSizeChanged(w, h, oldw, oldh)
         val safeWidth = w - paddingLeft - paddingRight
         val safeHeight = h - paddingTop - paddingRight
@@ -149,15 +133,10 @@ class ButtonColorLettersView(
     }
 
     private fun setPosition() {
-        val bound = Rect()
-        paintText.getTextBounds(button.getText(), 0, button.getText().length, bound)
-        val textWidth = paintText.measureText(button.getText())
-        val textHeight = bound.height()
-
         image?.let {
-            startImgX = (width - textWidth - it.intrinsicWidth - space) / 2
+            startImgX = (width - textWidth - it.intrinsicWidth - spaceBetweenTextImg) / 2
             startImgY = ((height - it.intrinsicHeight - paddingTop - paddingBottom) / 2).toFloat()
-            startTextX = startImgX + it.intrinsicWidth + space
+            startTextX = startImgX + it.intrinsicWidth + spaceBetweenTextImg
         }
         if (image == null) startTextX = buttonBackground.centerX() - (textWidth / 2f)
         startTextY = buttonBackground.centerY() + (textHeight / 2f)
@@ -168,7 +147,6 @@ class ButtonColorLettersView(
         defaultStyleAttr: Int,
         defaultStyleRes: Int
     ) {
-        Log.e("AAAA", "initializationAttr")
         val typedArray = context.obtainStyledAttributes(
             attributesSet,
             R.styleable.ButtonColorLettersView,
@@ -181,20 +159,26 @@ class ButtonColorLettersView(
         )
         colorContainer = typedArray.getColor(
             R.styleable.ButtonColorLettersView_customColorContainer,
-            0
+            Constants.DEFAULT_CONTAINER_COLOR
         )
         strokeWidthContainer =
-            typedArray.getFloat(R.styleable.ButtonColorLettersView_customStrokeWidth, 5f)
+            typedArray.getFloat(
+                R.styleable.ButtonColorLettersView_customStrokeWidth,
+                Constants.DEFAULT_STROKE_WIDTH
+            )
         var text = typedArray.getText(
             R.styleable.ButtonColorLettersView_customText
         )
         val textSize =
-            typedArray.getDimension(R.styleable.ButtonColorLettersView_customTextSize, 32f)
+            typedArray.getDimension(
+                R.styleable.ButtonColorLettersView_customTextSize,
+                Constants.DEFAULT_TEXT_SIZE
+            )
         image = typedArray.getDrawable(
             R.styleable.ButtonColorLettersView_customImage
         )
         if (text == null) {
-            text = "google"
+            text = Constants.DEFAULT_TEXT
         }
         button = ButtonColorLetters(text.toString(), textSize, image)
 
@@ -202,7 +186,6 @@ class ButtonColorLettersView(
     }
 
     private fun defaultInitializationAttr() {
-        Log.e("AAAA", "defaultInitializationAttr")
         colorBackground = Constants.DEFAULT_COLOR_CUSTOM_BUTTON_BACKGROUND
         colorContainer = Constants.DEFAULT_COLOR_CUSTOM_BUTTON_CONTAINER
     }

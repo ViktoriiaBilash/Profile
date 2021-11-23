@@ -50,14 +50,13 @@ class AddContactDialog(private val listener: ItemClickListener) : DialogFragment
         if (dialog != null) {
             val width = ViewGroup.LayoutParams.MATCH_PARENT
             val height = ViewGroup.LayoutParams.MATCH_PARENT
-            dialog.getWindow()?.setLayout(width, height)
+            dialog.window?.setLayout(width, height)
         }
     }
 
     companion object {
         //unique dialogs tag
         @JvmStatic
-        val TAG = AddContactDialog::class.java.simpleName
-
+        val TAG: String = AddContactDialog::class.java.simpleName
     }
 }

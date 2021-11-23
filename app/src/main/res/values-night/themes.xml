@@ -97,7 +97,7 @@
         <item name="customStrokeWidth">2dp</item>
     </style>
 
-    <style name="ButtonStrokeColorSecondary">
+    <style name="ButtonStrokeColorSecondary" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="strokeColor">?attr/colorSecondary</item>
         <item name="customStrokeWidth">2dp</item>
         <item name="cornerRadius">5dp</item>

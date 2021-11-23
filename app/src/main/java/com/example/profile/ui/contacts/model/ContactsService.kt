@@ -40,5 +40,4 @@ class ContactsService {
     fun addContact(model: Contact) {
         contacts.add(model)
     }
-
 }

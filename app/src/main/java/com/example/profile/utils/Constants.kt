@@ -12,4 +12,10 @@ object Constants {
     const val MAX_LENGTH_PASSWORD = 60
     const val DEFAULT_COLOR_CUSTOM_BUTTON_BACKGROUND = Color.RED
     const val DEFAULT_COLOR_CUSTOM_BUTTON_CONTAINER = Color.GREEN
+    const val DEFAULT_TEXT_SIZE = 32f
+    const val DEFAULT_STROKE_WIDTH = 10f
+    const val DEFAULT_TEXT = "google"
+    const val DEFAULT_CONTAINER_COLOR = 0
+    const val DEFAULT_CORNER_RADIUS = 15f
+    const val RATE_OF_FREE_SPACE = 3
 }

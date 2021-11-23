@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -43,7 +42,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_header_title">
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputText_email"
@@ -97,9 +95,10 @@
     <com.example.profile.ui.customviews.colorbutton.ButtonColorLettersView
         android:id="@+id/button_google_auth"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_all_large"
         app:customImage="@drawable/google_icon"
+        app:customTextSize="@dimen/margin_all_large"
         app:layout_constraintBottom_toTopOf="@+id/tv_or"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -120,13 +119,13 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_register"
+        style="@style/ButtonStrokeColorSecondary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_all_large"
         android:layout_marginEnd="@dimen/margin_all_large"
         android:layout_marginBottom="@dimen/margin_all_normal"
         android:text="@string/auth_register_button"
-        android:theme="@style/ButtonStrokeColorSecondary"
         app:layout_constraintBottom_toTopOf="@+id/tv_agreeTerms"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
