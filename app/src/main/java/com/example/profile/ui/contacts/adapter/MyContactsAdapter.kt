@@ -1,27 +1,21 @@
 package com.example.profile.ui.contacts.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.profile.R
 import com.example.profile.databinding.ItemBinding
-import com.example.profile.ui.contacts.model.Contact
+import com.example.profile.model.Contact
 import com.example.profile.utils.extensions.loadImageWithGlide
 
 class MyContactsAdapter(
 
-    private var contacts: MutableList<Contact>,
     private val listener: ItemClickListener
 ) :
-    RecyclerView.Adapter<MyContactsAdapter.ContactsViewHolder>() {
+    ListAdapter<Contact, MyContactsAdapter.ContactsViewHolder>(ContactsDiffCallback()) {
 
-    private var context: Context? = null
-
-    override fun getItemCount(): Int {
-        return contacts.size
-    }
 
     //used to create a new element of list
     //LayoutInflater creates view from layout
@@ -30,62 +24,42 @@ class MyContactsAdapter(
         val binding: ItemBinding = ItemBinding.inflate(
             view, parent, false
         )
-        val holder = ContactsViewHolder(binding)
-
-        holder.binding.buttonDelete.setOnClickListener {
-            val position = holder.absoluteAdapterPosition
-            val model = contacts[position]
-            context = parent.context
-
-            val newList: List<Contact> = ArrayList(contacts)
-            listener.onDelete(model)
-            updateList(newList, contacts)
-        }
-        return holder
+        return ContactsViewHolder(binding, listener)
     }
 
     //upload an item
     override fun onBindViewHolder(holder: ContactsViewHolder, position: Int) {
-        val contact = contacts[position]
-        holder.binding.tvName.text = contact.name
-        holder.binding.tvCareer.text = contact.career
-
-        if (contact.icon != null) {
-            holder.binding.imgAvatar.loadImageWithGlide(contact.icon.toString())
-        } else {
-            holder.binding.imgAvatar.setImageResource(R.drawable.ic_contact_avatar)
-        }
+        holder.bindTo(getItem(position))
     }
 
-    private fun updateList(oldList: List<Contact>, newList: List<Contact>) {
-        val diffCallback = ContactsDiffCallback(oldList, newList)
-        val diffResult = DiffUtil.calculateDiff(diffCallback)
-        diffResult.dispatchUpdatesTo(this)
-    }
 
-    class ContactsDiffCallback(
-        private val oldList: List<Contact>,
-        private val newList: List<Contact>
-    ) : DiffUtil.Callback() {
-
-        override fun getOldListSize(): Int {
-            return oldList.size
+    class ContactsDiffCallback : DiffUtil.ItemCallback<Contact>() {
+        override fun areItemsTheSame(oldItem: Contact, newItem: Contact): Boolean {
+            return oldItem.id == newItem.id
         }
 
-        override fun getNewListSize(): Int {
-            return newList.size
-        }
-
-        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return oldList[oldItemPosition].id == newList[newItemPosition].id
-        }
-
-        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return oldList[oldItemPosition]== newList[newItemPosition]
+        override fun areContentsTheSame(oldItem: Contact, newItem: Contact): Boolean {
+            return oldItem == newItem
         }
     }
 
     class ContactsViewHolder(
-        val binding: ItemBinding
-    ) : RecyclerView.ViewHolder(binding.root)
+        private val binding: ItemBinding,
+        private val listener: ItemClickListener,
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun bindTo(contact: Contact) {
+            binding.tvName.text = contact.name
+            binding.tvCareer.text = contact.career
+
+            if (contact.icon != null) {
+                binding.imgAvatar.loadImageWithGlide(contact.icon.toString())
+            } else {
+                binding.imgAvatar.setImageResource(R.drawable.ic_contact_avatar)
+            }
+
+            binding.buttonDelete.setOnClickListener {
+                listener.onDelete(contact)
+            }
+        }
+    }
 }

@@ -1,4 +1,6 @@
-package com.example.profile.ui.contacts.model
+package com.example.profile.db
+
+import com.example.profile.model.Contact
 
 class ContactsService {
 
@@ -31,13 +33,5 @@ class ContactsService {
 
     fun getContacts(): List<Contact> {
         return contacts
-    }
-
-    fun removeContact(model: Contact) {
-        contacts.remove(model)
-    }
-
-    fun addContact(model: Contact) {
-        contacts.add(model)
     }
 }

@@ -2,7 +2,7 @@ package com.example.profile.ui.contacts.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.profile.ui.contacts.model.ContactsService
+import com.example.profile.db.ContactsService
 
 class MyContactsViewModelFactory(private val contactsService: ContactsService):
 ViewModelProvider.Factory{

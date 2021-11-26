@@ -1,32 +1,30 @@
 package com.example.profile.ui.contacts.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.profile.ui.contacts.model.Contact
-import com.example.profile.ui.contacts.model.ContactsService
+import com.example.profile.model.Contact
+import com.example.profile.db.ContactsService
 
 class MyContactsViewModel(private val contactsService: ContactsService) : ViewModel() {
 
-    private var listInside = MutableLiveData<List<Contact>>()
-    val listOutside: LiveData<List<Contact>> = listInside
+    val contactsListLiveData = MutableLiveData<MutableList<Contact>>()
 
     init {
         loadContacts()
     }
 
-    private fun loadContacts() {
-        listInside.postValue(contactsService.getContacts())
-    }
-
     fun removeContact(model: Contact) {
-        contactsService.removeContact(model)
-        listInside.postValue(contactsService.getContacts())
+        contactsListLiveData.value?.remove(model)
+        contactsListLiveData.value = contactsListLiveData.value
     }
 
     fun addContact(model: Contact) {
         model.id = contactsService.getContacts().size
-        contactsService.addContact(model)
-        listInside.postValue(contactsService.getContacts())
+        contactsListLiveData.value?.add(model)
+        contactsListLiveData.value = contactsListLiveData.value
+    }
+
+    private fun loadContacts() {
+        contactsListLiveData.value = contactsService.getContacts().toMutableList()
     }
 }

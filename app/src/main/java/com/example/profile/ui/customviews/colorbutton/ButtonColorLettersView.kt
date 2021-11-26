@@ -32,7 +32,13 @@ class ButtonColorLettersView(
 
     constructor(context: Context) : this(context, null)
 
+    private val paintBackground: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val paintStroke: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val paintText: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val spaceBetweenTextImg = 30f
+
     private lateinit var button: ButtonColorLetters
+
     private var colorBackground by Delegates.notNull<Int>()
     private var colorContainer by Delegates.notNull<Int>()
     private var strokeWidthContainer by Delegates.notNull<Float>()
@@ -42,10 +48,6 @@ class ButtonColorLettersView(
     private var startImgY: Float = 0f
     private var startTextX: Float = 0f
     private var startTextY: Float = 0f
-    private val paintBackground: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val paintStroke: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val paintText: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val spaceBetweenTextImg = 30f
     private var textWidth: Float = 0f
     private var textHeight = 0f
 
@@ -56,7 +58,7 @@ class ButtonColorLettersView(
             defaultInitializationAttr()
         }
 
-        paintText.apply {
+        paintText.run {
             isAntiAlias = true
             textAlign = Paint.Align.CENTER
             textSize = button.lettersList[0].size
@@ -78,10 +80,10 @@ class ButtonColorLettersView(
     }
 
     override fun onDraw(canvas: Canvas?) {
-        setPosition()
         super.onDraw(canvas)
+        setPosition()
 
-        paintBackground.apply {
+        paintBackground.run {
             color = colorBackground
             isAntiAlias = true
         }
@@ -92,7 +94,7 @@ class ButtonColorLettersView(
         )
 
         if (colorContainer != 0) {
-            paintStroke.apply {
+            paintStroke.run {
                 color = colorContainer
                 style = Paint.Style.STROKE
                 strokeWidth = strokeWidthContainer

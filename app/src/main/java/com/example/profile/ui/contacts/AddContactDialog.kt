@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.profile.databinding.DialogAddContactBinding
 import com.example.profile.ui.contacts.adapter.ItemClickListener
-import com.example.profile.ui.contacts.model.Contact
+import com.example.profile.model.Contact
 
 class AddContactDialog(private val listener: ItemClickListener) : DialogFragment() {
 
